@@ -1,2 +1,2 @@
 # eslint-rules
-Repository for 
+Repository for tyler recommended eslint rules
