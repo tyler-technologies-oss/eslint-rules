@@ -1,0 +1,42 @@
+{
+  "name": "@tylertech/eslint-rules",
+  "version": "0.2.1",
+  "description": "Common TypeScript lint rules/preferences for Tyler Technologies.",
+  "main": "dist/index.js",
+  "typings": "typings/index.d.ts",
+  "scripts": {
+    "build": "gulp build",
+    "lint": "gulp tslint",
+    "publish": "npm publish dist",
+    "changelog": "standard-changelog -i CHANGELOG.md -k package.json"
+  },
+  "keywords": [
+    "tslint",
+    "rules",
+    "typescript",
+    "lint",
+    "linting",
+    "linter",
+    "tslint-plugin"
+  ],
+  "author": "Kieran Nichols <kieran.nichols@tylertech.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "http://yarpvproget/npm/npm_Tyler_Core/"
+  },
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "tslint": "^5.11.0",
+    "tslint-eslint-rules": "^5.4.0"
+  },
+  "devDependencies": {
+    "@tylertech/build-tools": "^1.2.0",
+    "@types/gulp": "^4.0.5",
+    "@types/run-sequence": "0.0.30",
+    "gulp-modify-file": "^1.0.1",
+    "run-sequence": "^2.2.1",
+    "standard-changelog": "^2.0.6",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.6"
+  }
+}

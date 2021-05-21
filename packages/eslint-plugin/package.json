@@ -1,0 +1,50 @@
+{
+    "name": "@tylertech/eslint-plugin",
+    "version": "0.0.1",
+    "description": "Common TypeScript lint rules/preferences for Tyler Technologies.",
+    "main": "dist/index.js",
+    "typings": "typings/index.d.ts",
+    "scripts": {
+        "build": "rimraf ./dist && microbundle --tsconfig tsconfig.build.json --no-sourcemap --target=node --compress --format=cjs && ncp ./src/configs ./dist/configs && ncp ./package.json ./dist/package.json",
+        "lint": "gulp tslint",
+        "publish": "npm publish dist",
+        "changelog": "standard-changelog -i CHANGELOG.md -k package.json"
+    },
+    "keywords": [
+        "tslint",
+        "rules",
+        "typescript",
+        "lint",
+        "linting",
+        "linter",
+        "tslint-plugin"
+    ],
+    "author": "Paul Lapczynski   <paul.lapczynski@tylertech.com>",
+    "license": "MIT",
+    "publishConfig": {
+        "registry": "https://tylertech.jfrog.io/tylertech/api/npm/npm/"
+    },
+    "dependencies": {
+        "@angular-eslint/eslint-plugin-template": "^12.0.0",
+        "@typescript-eslint/experimental-utils": "^4.24.0",
+        "gulp": "^4.0.2",
+        "tslint": "^5.11.0",
+        "tslint-eslint-rules": "^5.4.0"
+    },
+    "devDependencies": {
+        "@tylertech/build-tools": "^1.2.0",
+        "@types/gulp": "^4.0.5",
+        "@types/run-sequence": "0.0.30",
+        "gulp-modify-file": "^1.0.1",
+        "microbundle": "^0.13.0",
+        "ncp": "^2.0.0",
+        "run-sequence": "^2.2.1",
+        "standard-changelog": "^2.0.6",
+        "ts-node": "^7.0.1",
+        "typescript": "^3.1.6"
+    },
+    "peerDependencies": {
+        "eslint": "*",
+        "typescript": "*"
+    }
+}
