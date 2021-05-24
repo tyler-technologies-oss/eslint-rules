@@ -7,19 +7,5 @@
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended"
-    ],
-    "rules": {
-        "no-restricted-imports": [
-            "error",
-            {
-                "paths": [
-                    ""
-                ],
-                "patterns": [
-                    "./../*"
-                ],
-                "message": "asd"
-            }
-        ]
-    }
+    ]
 }

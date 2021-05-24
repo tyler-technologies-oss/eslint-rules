@@ -1,6 +1,9 @@
 {
     "extends": "./configs/base.json",
     "rules": {
+        "@tylertech/eslint-rules/invalid-relative-import-prefix": "error",
+        "@tylertech/eslint-rules/require-private-modifier": "error",
+        "@tylertech/eslint-rules/require-private-underscore": "error",
         "@typescript-eslint/adjacent-overload-signatures": "error",
         "@typescript-eslint/array-type": "off",
         "@typescript-eslint/ban-types": [

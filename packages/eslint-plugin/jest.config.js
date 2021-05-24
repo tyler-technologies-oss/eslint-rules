@@ -1,6 +1,5 @@
-'use strict';
 
-module.exports = {
+export default  {
   testEnvironment: 'node',
   transform: {
     '^.+\\.ts?$': 'ts-jest',

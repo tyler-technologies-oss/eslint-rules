@@ -1,8 +1,7 @@
 {
-  "name": "@tylertech/eslint-rules",
+  "name": "@tylertech-eslint/tylertech-eslint",
   "version": "0.0.1",
   "description": "Common lint rules/preferences for Tyler Technologies.",
-  "main": "dist/index.js",
   "typings": "typings/index.d.ts",
   "scripts": {
     "build": "gulp build",
@@ -22,12 +21,7 @@
   ],
   "author": "Paul Lapczynski <paul.lapczynski@tylertech.com>",
   "license": "MIT",
-  "dependencies": {
-    "gulp": "^4.0.2",
-    "jest": "^26.6.3",
-    "tslint": "^5.11.0",
-    "tslint-eslint-rules": "^5.4.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@tylertech/build-tools": "^1.2.0",
     "@types/gulp": "^4.0.5",
@@ -39,6 +33,10 @@
     "run-sequence": "^2.2.1",
     "standard-changelog": "^2.0.6",
     "ts-node": "^7.0.1",
-    "typescript": "^3.1.6"
+    "typescript": "^3.1.6",
+    "gulp": "^4.0.2",
+    "jest": "^26.6.3",
+    "tslint": "^5.11.0",
+    "tslint-eslint-rules": "^5.4.0"
   }
 }
