@@ -1,12 +1,7 @@
-// import { Rule } from 'eslint';
-// import { ESLintUtils } from '@typescript-eslint/experimental-utils';
 import { createRule } from '../utils/create-rule';
-//------------------------------------------------------------------------------
-// Rule Definition
-//------------------------------------------------------------------------------
+import { TSESTree } from '@typescript-eslint/experimental-utils';
 
 type Options = string[];
-
 type MessageIds = 'invalid';
 
 export default createRule<Options, MessageIds>({
@@ -19,15 +14,23 @@ export default createRule<Options, MessageIds>({
             recommended: 'error'
         },
         schema: {},
-        messages: { invalid: 'Relative import statements cannot start with "./../' }
+        messages: { invalid: 'Relative import statements cannot start with "./../' },
+        fixable: 'code'
     },
+    defaultOptions: [],
     create: function (context) {
-        function reportIfInvalidRelativeImport(node: any) {
-            const importSource = node.source.value as string;
+        function reportIfInvalidRelativeImport(node: TSESTree.ImportDeclaration & TSESTree.Node) {
+            const importSource = (node.source.value as string)!.trim();
             const invalidRelativeImportStart = importSource.substr(0, 5);
-
             if (typeof invalidRelativeImportStart === 'string' && invalidRelativeImportStart === './../') {
-                context.report({ messageId: 'invalid', node: node });
+                context.report({
+                    messageId: 'invalid',
+                    node: node.source,
+                    fix: function (fixer) {
+                        return fixer.replaceTextRange([node.source.range[0], node.source.range[0] + 3], `${node.source.raw[0]}../`)
+                    }
+                });
+
             }
         }
 
@@ -36,32 +39,5 @@ export default createRule<Options, MessageIds>({
                 reportIfInvalidRelativeImport(node);
             }
         }
-    },
-    defaultOptions: []
-})
-
-// export default {
-//     meta: {
-//         type: 'suggestion',
-//         docs: {
-//             url: '',
-//         }
-//     },
-//     create: function (context) {
-//         function reportIfAbsolute(node: any) {
-//             const importSource = node.source.value as string;
-//             const invalidRelativeImportStart = importSource.substr(0, 5);
-//             console.log(invalidRelativeImportStart);
-
-//             if (typeof invalidRelativeImportStart === 'string' && invalidRelativeImportStart === './../') {
-//                 context.report({ message: 'wtf', node: node });
-//             }
-//         }
-
-//         return {
-//             ImportDeclaration(node) {
-//                 reportIfAbsolute(node);
-//             }
-//         }
-//     }
-// } as Rule.RuleModule;
+    }
+});
