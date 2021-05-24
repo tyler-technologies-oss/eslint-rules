@@ -1,7 +1,7 @@
 {
-    "name": "@tylertech/eslint-plugin",
+    "name": "@tylertech/eslint-plugin-angular-template",
     "version": "0.0.1",
-    "description": "Common TypeScript lint rules/preferences for Tyler Technologies.",
+    "description": "Common angular template lint rules/preferences for Tyler Technologies.",
     "main": "dist/index.js",
     "typings": "typings/index.d.ts",
     "scripts": {
@@ -11,19 +11,17 @@
         "changelog": "standard-changelog -i CHANGELOG.md -k package.json"
     },
     "keywords": [
-        "tslint",
+        "eslint",
         "rules",
         "typescript",
+        "angular",
+        "angular-eslint",
         "lint",
         "linting",
-        "linter",
-        "tslint-plugin"
+        "linter"
     ],
-    "author": "Paul Lapczynski   <paul.lapczynski@tylertech.com>",
+    "author": "Paul Lapczynski  <paul.lapczynski@tylertech.com>",
     "license": "MIT",
-    "publishConfig": {
-        "registry": "https://tylertech.jfrog.io/tylertech/api/npm/npm/"
-    },
     "dependencies": {
         "@angular-eslint/eslint-plugin-template": "^12.0.0",
         "@typescript-eslint/experimental-utils": "^4.24.0",

@@ -1,0 +1,17 @@
+{
+    "version": 1,
+    "projects": {
+        "eslint-plugin": {
+            "root": "packages/builder",
+            "type": "library"
+        },
+        "eslint-plugin-angular": {
+            "root": "packages/eslint-plugin-angular",
+            "type": "library"
+        },
+        "eslint-plugin-angular-template": {
+            "root": "packages/eslint-plugin-angular-template",
+            "type": "library"
+        }
+    }
+}
