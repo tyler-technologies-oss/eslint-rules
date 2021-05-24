@@ -2,19 +2,20 @@ import { createRule } from '../utils/create-rule';
 import { TSESTree } from '@typescript-eslint/experimental-utils';
 
 type Options = string[];
-type MessageIds = 'invalid';
-
+type MessageIds = 'invalidRelativeImportPrefix';
+export const RULE_NAME = 'invalid-relative-import-prefix'
+    ;
 export default createRule<Options, MessageIds>({
-    name: 'invalid-relative-import-prefix',
+    name: RULE_NAME,
     meta: {
         type: 'suggestion',
         docs: {
             category: 'Best Practices',
             description: 'Avoids inconsistent import paths.',
-            recommended: 'error'
+            recommended: 'warn'
         },
         schema: {},
-        messages: { invalid: 'Relative import statements cannot start with "./../' },
+        messages: { invalidRelativeImportPrefix: 'Relative import statements cannot start with "./../' },
         fixable: 'code'
     },
     defaultOptions: [],
@@ -24,13 +25,12 @@ export default createRule<Options, MessageIds>({
             const invalidRelativeImportStart = importSource.substr(0, 5);
             if (typeof invalidRelativeImportStart === 'string' && invalidRelativeImportStart === './../') {
                 context.report({
-                    messageId: 'invalid',
+                    messageId: 'invalidRelativeImportPrefix',
                     node: node.source,
                     fix: function (fixer) {
                         return fixer.replaceTextRange([node.source.range[0], node.source.range[0] + 3], `${node.source.raw[0]}../`)
                     }
                 });
-
             }
         }
 
