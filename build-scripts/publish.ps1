@@ -20,10 +20,9 @@ Set-Location $(Join-Path $PSScriptRoot ..)
 
 Write-Output "========OUTPUTTING VERSION NUMBER: $VersionNumber========="
 Write-Output "========OUTPUTTING VERSION NUMBER: $Tag========="
-Invoke-Expression "pwd"
 Write-Host "Building eslint-plugin"
+Invoke-Expression "$PWD"
 Invoke-Expression "cd packages/eslint-plugin"
-Invoke-Expression "pwd"
 Write-Host "Install npm packages..."
 Invoke-Expression "npm install"
 Invoke-Expression "npm run publish"
