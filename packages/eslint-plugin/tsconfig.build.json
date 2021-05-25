@@ -1,9 +1,15 @@
-  
-{
-  "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "outDir": "./dist",
-    "resolveJsonModule": true
-  },
-  "include": ["src"]
-}
+  {
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+      "outDir": "./dist",
+      "resolveJsonModule": true,
+      "moduleResolution": "node",
+      "module": "CommonJS",
+      "lib": [
+        "ES2020"
+      ]
+    },
+    "include": [
+      "src",
+    ]
+  }

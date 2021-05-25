@@ -21,7 +21,7 @@ export default createRule<Options, MessageIds>({
     defaultOptions: [],
     create: function (context) {
         function reportIfInvalidRelativeImport(node: TSESTree.ImportDeclaration & TSESTree.Node) {
-            const importSource = (node.source.value as string)!.trim();
+            const importSource = (node.source.value as string).trim();
             const invalidRelativeImportStart = importSource.substr(0, 5);
             if (typeof invalidRelativeImportStart === 'string' && invalidRelativeImportStart === './../') {
                 context.report({

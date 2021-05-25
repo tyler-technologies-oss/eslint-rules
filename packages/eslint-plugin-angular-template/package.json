@@ -1,5 +1,5 @@
 {
-    "name": "@tylertech/eslint-plugin-angular-template",
+    "name": "@tylertech-eslint/eslint-plugin-angular-template",
     "version": "0.0.1",
     "description": "Common angular template lint rules/preferences for Tyler Technologies.",
     "main": "dist/index.js",

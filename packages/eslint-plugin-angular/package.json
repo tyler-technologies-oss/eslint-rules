@@ -1,5 +1,5 @@
 {
-    "name": "@tylertech/eslint-plugin-angular",
+    "name": "@tylertech-eslint/eslint-plugin-angular",
     "version": "0.0.1",
     "description": "Common TypeScript/Angular lint rules/preferences for Tyler Technologies.",
     "main": "dist/index.js",
