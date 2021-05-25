@@ -7,8 +7,6 @@
 const fs = require('fs');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ncp = require('ncp');
-// const fs = require('fs');
-
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const gulp = require('gulp');
 // eslint-disable-next-line @typescript-eslint/no-var-requires

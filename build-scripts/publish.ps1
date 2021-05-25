@@ -1,6 +1,7 @@
 param(
     [Parameter(Mandatory=$true)]
-    [string]$VersionNumber
+    [string]$VersionNumber,
+    [string]$Tag
 )
 
 $ErrorActionPreference = "Stop";
@@ -17,7 +18,7 @@ Get-Tags;
 Push-Location
 Set-Location $(Join-Path $PSScriptRoot ..)
 
-
+Write-Output "========OUTPUTTING VERSION NUMBER: $VersionNumber========="
 
 Write-Host "Building eslint-plugin"
 Invoke-Expression "cd packages/eslint-plugin"
@@ -34,4 +35,6 @@ npm publish --registry "$env:ARTIFACTORY_NPM_REGISTRY" ./publish
 
 Pop-Location
 
-Add-Build-Tag "v$VersionNumber"
+if ($Tag) {
+  Add-Build-Tag "$Tag"
+}
