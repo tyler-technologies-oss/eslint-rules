@@ -7,7 +7,7 @@
     "type": "module",
     "scripts": {
         "build": "rimraf ./dist && microbundle --tsconfig tsconfig.build.json --no-sourcemap --target=node --compress --format=cjs && ncp ./src/configs ./dist/configs",
-        "publish": "npm run build && rimraf ./publish && gulp publish",
+        "publish": "rimraf ./publish && npm run build &&  gulp publish",
         "test": "jest --coverage",
         "changelog": "standard-changelog -i CHANGELOG.md -k package.json",
         "gulp": "gulp"
