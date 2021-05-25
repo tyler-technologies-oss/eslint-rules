@@ -49,10 +49,10 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "GitHub Actions"
           if ($env:GITHUB_EVENT_NAME -eq "push") {
-            Deploy/build-scripts/publish.ps1 -VersionNumber "${{ steps.semver.outputs.version }}"
+            build-scripts/publish.ps1 -VersionNumber "${{ steps.semver.outputs.version }}"
           }
           else {
-            Deploy/build-scripts/publish.ps1 -VersionNumber "${{ steps.semverpr.outputs.version }}-${{ steps.getbranch.outputs.safebranch }}" -Tag "${{ steps.getbranch.outputs.safebranch }}-v${{ steps.semverpr.outputs.version }}"
+            build-scripts/publish.ps1 -VersionNumber "${{ steps.semverpr.outputs.version }}-${{ steps.getbranch.outputs.safebranch }}" -Tag "${{ steps.getbranch.outputs.safebranch }}-v${{ steps.semverpr.outputs.version }}"
           }
         shell: pwsh
     env:
