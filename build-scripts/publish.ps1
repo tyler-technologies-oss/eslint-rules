@@ -17,11 +17,12 @@ Get-Tags;
 Push-Location
 Set-Location $(Join-Path $PSScriptRoot ..)
 
-Write-Host "Install npm packages..."
-Invoke-Expression "npm install"
+
 
 Write-Host "Building eslint-plugin"
 Invoke-Expression "cd packages/eslint-plugin"
+Write-Host "Install npm packages..."
+Invoke-Expression "npm install"
 Invoke-Expression "npm run build"
 Invoke-Expression "npm run publish"
 
