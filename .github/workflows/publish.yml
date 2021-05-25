@@ -1,0 +1,76 @@
+name: Build
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        if: ${{ github.event_name == 'pull_request' }}
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/checkout@v2
+        if: ${{ github.event_name == 'push' }}
+        with:
+          fetch-depth: 0
+      - name: Determine next version
+        uses: paulhatch/semantic-version@v2.1.1
+        id: semver
+        with:
+          branch: "master"
+          tag_prefix: "v"
+          major_pattern: "(MAJOR)"
+          minor_pattern: "(MINOR)"
+          format: "${major}.${minor}.${patch}"
+      - name: Build tag
+        run: |
+          if [ "$GITHUB_EVENT_NAME" != "push" ]; then
+            branchlower=$(echo -n "${GITHUB_HEAD_REF#refs/heads/}" | tr -c '[:alnum:]-' '-' | tr A-Z a-z)
+            echo "TAG=latest-$branchlower" >> "$GITHUB_ENV"
+          fi
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+            **/node_modules
+          key: node10-${{ hashFiles('**/package-lock.json') }}
+      - name: Run publish.ps1
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "GitHub Actions"
+          if ($env:GITHUB_EVENT_NAME -eq "push") {
+            build-scripts/publish.ps1 -VersionNumber "${{ steps.semver.outputs.version }}"
+          }
+          else {
+            build-scripts/publish.ps1 -VersionNumber "${{ steps.semver.outputs.version }}-$env:TAG"
+          }
+        shell: pwsh
+      - uses: actions/checkout@v2
+        with:
+          repository: tyler-technologies/tcp-artifact-security-scan
+          ref: refs/tags/v1
+          ssh-key: "${{ secrets.TCP_SCAN_ACTION_KEY }}"
+          path: tcp-artifact-security-scan
+      - uses: ./tcp-artifact-security-scan
+        name: Security scan
+        with:
+          user: ${{ env.ARTIFACTORY_USERNAME }}
+          password: ${{ env.ARTIFACTORY_PASSWORD }}
+          npm: ${{ env.NPM_NAME }}
+          npm-registry: ${{ env.ARTIFACTORY_NPM_REGISTRY }}
+    env:
+      ARTIFACTORY_PULL_REGISTRY: "${{ secrets.ARTIFACTORY_PULL_REGISTRY }}"
+      ARTIFACTORY_NUGET_REGISTRY: "${{ secrets.CORPDEV_ARTIFACTORY_NUGET_REGISTRY }}"
+      ARTIFACTORY_NPM_REGISTRY: "${{ secrets.CORPDEV_ARTIFACTORY_NPM_REGISTRY }}"
+      ARTIFACTORY_PUSH_REGISTRY: "${{ secrets.CORPDEV_ARTIFACTORY_PUSH_REGISTRY }}"
+      ARTIFACTORY_USERNAME: "${{ secrets.CORPDEV_ARTIFACTORY_USERNAME }}"
+      ARTIFACTORY_PASSWORD: "${{ secrets.CORPDEV_ARTIFACTORY_PASSWORD }}"
+      ARTIFACTORY_TOKEN: "${{ secrets.CORPDEV_ARTIFACTORY_TOKEN }}"
