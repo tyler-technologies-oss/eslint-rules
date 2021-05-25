@@ -4,7 +4,6 @@
     "description": "Common TypeScript lint rules/preferences for Tyler Technologies.",
     "main": "dist/index.js",
     "typings": "typings/index.d.ts",
-    "type": "module",
     "scripts": {
         "build": "rimraf ./dist && microbundle --tsconfig tsconfig.build.json --no-sourcemap --target=node --compress --format=cjs && ncp ./src/configs ./dist/configs",
         "publish": "rimraf ./publish && npm run build && gulp publish",

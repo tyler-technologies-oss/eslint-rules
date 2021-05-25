@@ -1,14 +1,26 @@
-import { task } from 'gulp';
-import { resolve, join } from 'path';
-import fs from 'fs';
-import ncp from 'ncp'
+// import { gulp.task } from 'gulp';
+// import { resolve, join } from 'path';
+// import fs from 'fs';
+// import ncp from 'ncp'
 
-const ROOT = resolve(__dirname, './');
-const OUTPUT_DIR = join(ROOT, 'publish');
-const PACKAGE_DIST = join(ROOT, 'dist');
-const PACKAGE_DIST_PUBLISH = join(OUTPUT_DIR, 'dist');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const fs = require('fs');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const ncp = require('ncp');
+// const fs = require('fs');
 
-task('publish', async done => {
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const gulp = require('gulp');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require('path');
+
+
+const ROOT = path.resolve(__dirname, './');
+const OUTPUT_DIR = path.join(ROOT, 'publish');
+const PACKAGE_DIST = path.join(ROOT, 'dist');
+const PACKAGE_DIST_PUBLISH = path.join(OUTPUT_DIR, 'dist');
+
+gulp.task('publish', async (done: () => void) => {
     const copyBuildToPublishFolder = new Promise(resolve => {
         ncp(PACKAGE_DIST, PACKAGE_DIST_PUBLISH, () => {
             resolve(true);
@@ -16,7 +28,7 @@ task('publish', async done => {
     });
 
     const copyPackageJson = new Promise(resolve => {
-        ncp(join(ROOT, 'package.json'), join(OUTPUT_DIR, 'package.json'), () => {
+        ncp(path.join(ROOT, 'package.json'), path.join(OUTPUT_DIR, 'package.json'), () => {
             resolve(true);
         });
     });
@@ -34,7 +46,7 @@ task('publish', async done => {
     });
 
     const copyTypings = new Promise(resolve => {
-        ncp(join(ROOT, 'typings'), join(OUTPUT_DIR, 'typings'), () => {
+        ncp(path.join(ROOT, 'typings'), path.join(OUTPUT_DIR, 'typings'), () => {
             resolve(true)
         });
     });
