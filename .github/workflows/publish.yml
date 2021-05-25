@@ -45,6 +45,7 @@ jobs:
           format: "${major}.${minor}.${patch}"
       # Since we are running a powershell script we have to specify the "shell" parameter. The default is "bash".
       - name: Run publish.ps1
+        working-directory: "./packages/eslint-plugin"
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "GitHub Actions"
