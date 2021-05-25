@@ -6,7 +6,7 @@
     "typings": "typings/index.d.ts",
     "scripts": {
         "build": "rimraf ./dist && microbundle --tsconfig tsconfig.build.json --no-sourcemap --target=node --compress --format=cjs && ncp ./src/configs ./dist/configs",
-        "publish": "rimraf ./publish && npm run build && gulp publish",
+        "build:publish": "rimraf ./publish && npm run build && gulp publish",
         "test": "jest --coverage",
         "changelog": "standard-changelog -i CHANGELOG.md -k package.json",
         "gulp": "gulp",

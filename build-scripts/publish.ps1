@@ -24,7 +24,7 @@ Write-Host "Building eslint-plugin"
 Invoke-Expression "cd packages/eslint-plugin"
 Write-Host "Install npm packages..."
 Invoke-Expression "npm install"
-Invoke-Expression "npm run publish"
+Invoke-Expression "npm run build:publish"
 
 $VersionNumber = Update-Version-Number-PackageJson $packageJson $VersionNumber $release;
 Write-Host "========== Building Version: $VersionNumber =========="
