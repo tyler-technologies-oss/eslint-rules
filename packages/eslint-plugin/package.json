@@ -10,7 +10,7 @@
         "test": "jest --coverage",
         "changelog": "standard-changelog -i CHANGELOG.md -k package.json",
         "gulp": "gulp",
-        "rimraf": "rimraf"
+        "rimraf": "./node_modules/rimraf/bin.js"
     },
     "keywords": [
         "eslint",
