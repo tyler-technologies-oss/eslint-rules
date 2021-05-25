@@ -5,7 +5,7 @@ param(
 
 $ErrorActionPreference = "Stop";
 
-$packageJson = "./build/_publish/package.json";
+$packageJson = "./publish/package.json";
 $release = $false;
 
 # import common functions script from the same folder
