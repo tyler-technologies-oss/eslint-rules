@@ -29,7 +29,7 @@ $packages = Get-ChildItem "packages";
 Write-Host "======Checking for package changes========"
 Write-Host "$packages"
 foreach ($package in $packages) {
-  $item = $package.Substring(0, $package.IndexOf("packages/"))
+  $item = $package.name
     $changes = Invoke-Expression "git diff --name-only origin/master HEAD" | Where-Object { $_ -like "packages/$item/*" };
     Write-Host $changes
     $hasPackageChanged = $changes.count -gt 0;
