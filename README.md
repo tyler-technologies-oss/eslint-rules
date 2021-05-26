@@ -23,7 +23,7 @@ Both angular specific packages extend @angular-eslint, and more information can 
 > npm i @tylertech-eslint/eslint-plugin
 
 **.eslintrc.json**
-``` JSON
+``` jsonc
 {
     "overrides": {
          "files": [
@@ -41,7 +41,7 @@ Both angular specific packages extend @angular-eslint, and more information can 
 > npm i @tylertech-eslint/eslint-plugin-angular
 
 **.eslintrc.json**
-``` JSON
+``` jsonc
 {
     "overrides": {
          "files": [
@@ -59,7 +59,7 @@ Both angular specific packages extend @angular-eslint, and more information can 
 > npm i @tylertech-eslint/eslint-plugin-angular-template
 
 **.eslintrc.json**
-``` JSON
+``` jsonc
 {
     "overrides": {
          "files": [
@@ -74,19 +74,17 @@ Both angular specific packages extend @angular-eslint, and more information can 
 
 ## Overriding a single rule
 If for some reason you want to disabled or change the ruling a recommended rule, this is possible by adding that into the **.eslintrc.json**
-``` JSON
+``` jsonc
 {
     "overrides": {
-    ...
         "rules": {
         // Standard ESLint Rule
         "arrow-spacing": "off",
-        
+
         // Custom @tylertech-eslint rule
         "@tylertech-eslint/require-private-underscore": "warn"
         }
     }
-    ...
 }
 ```
 
@@ -117,7 +115,7 @@ Fortunately, however, ESLint has clearly defined points of extensibility that we
 
 Therefore, the critical part of our configuration is the `"overrides"` array:
 
-```json
+```jsonc
 {
   "overrides": [
     /**
