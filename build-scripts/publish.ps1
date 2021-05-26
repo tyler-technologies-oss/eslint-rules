@@ -32,7 +32,7 @@ foreach ($package in $packages) {
   $item = $package.name
   $changes = Invoke-Expression "git diff --name-only origin/master HEAD" | Where-Object { $_ -like "packages/$item/*" };
   $hasPackageChanged = $changes.count -gt 0;
-  
+
   if ($hasPackageChanged) {
     Write-Output "The Package $item has changed"
     Write-Output "Updating $item npm package..."
@@ -45,7 +45,7 @@ foreach ($package in $packages) {
     Write-Host "========== Building Version: $VersionNumber =========="
     Write-Host "##github[buildNumber '$($VersionNumber)']"
 
-    Write-Host "Publishing" + $item.Substrin("packages/")
+    Write-Host "Publishing" + $item.Substring("packages/")
     npm publish --registry "$env:ARTIFACTORY_NPM_REGISTRY" ./publish
     Invoke-Expression "cd $workingDirectory"
   }
