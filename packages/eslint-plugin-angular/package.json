@@ -6,10 +6,9 @@
     "typings": "typings/index.d.ts",
     "scripts": {
         "build": "rimraf ./dist && microbundle --tsconfig tsconfig.build.json --no-sourcemap --target=node --compress --format=cjs && ncp ./src/configs ./dist/configs",
-        "lint": "gulp tslint",
-        "publish": "rimraf ./publish && npm run build && gulp publish",
-        "changelog": "standard-changelog -i CHANGELOG.md -k package.json",
-        "rimraf": "./node_modules/rimraf/bin.js"
+        "build:publish": "rimraf ./publish && npm run build && gulp publish",
+        "gulp": "gulp",
+        "rimraf": "rimraf"
     },
     "keywords": [
         "eslint",

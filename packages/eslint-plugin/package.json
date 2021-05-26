@@ -8,9 +8,8 @@
         "build": "rimraf ./dist && microbundle --tsconfig tsconfig.build.json --no-sourcemap --target=node --compress --format=cjs && ncp ./src/configs ./dist/configs",
         "build:publish": "rimraf ./publish && npm run build && gulp publish",
         "test": "jest --coverage",
-        "changelog": "standard-changelog -i CHANGELOG.md -k package.json",
         "gulp": "gulp",
-        "rimraf": "./node_modules/rimraf/bin.js"
+        "rimraf": "rimraf"
     },
     "keywords": [
         "eslint",
