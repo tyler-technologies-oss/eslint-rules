@@ -8,7 +8,7 @@ Write-Output "add-eslint-rules-v0.0.7".Substring(0, "add-eslint-rules-v0.0.7".In
 $packages = Get-ChildItem "packages";
 
 foreach ($item in $packages) {
-    $changes = Invoke-Expression "git diff --name-only master...add-eslint-rules" | Where-Object { $_ -like "packages/$item/*" };
+    $changes = Invoke-Expression "git diff --name-only origin/master...origin/add-eslint-rules" | Where-Object { $_ -like "packages/$item/*" };
     $hasPackageChanged = $changes.count -gt 0;
 
     if ($hasPackageChanged) {
