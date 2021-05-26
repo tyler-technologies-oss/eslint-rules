@@ -28,7 +28,7 @@ Set-Location $(Join-Path $PSScriptRoot ..)
 $packages = Get-ChildItem "packages";
 Write-Host "======Checking for package changes========"
 foreach ($item in $packages) {
-    $changes = Invoke-Expression "git diff --name-only master...origin/$branchName" | Where-Object { $_ -like "packages/$item/*" };
+    $changes = Invoke-Expression "git diff --name-only origin/master HEAD" | Where-Object { $_ -like "packages/$item/*" };
     $hasPackageChanged = $changes.count -gt 0;
 
     if ($hasPackageChanged) {
