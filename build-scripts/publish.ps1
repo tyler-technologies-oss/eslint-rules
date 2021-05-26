@@ -2,7 +2,7 @@ param(
     [Parameter(Mandatory=$true)]
     [string]$VersionNumber,
     [string]$Tag,
-    [string]$branchName
+    [string]$BranchName
 )
 
 Write-Output "============$branchName==============="
