@@ -45,7 +45,7 @@ foreach ($package in $packages) {
     Write-Host "========== Building Version: $VersionNumber =========="
     Write-Host "##github[buildNumber '$($VersionNumber)']"
 
-    Write-Host "Publishing" + $item.Substring($item.IndexOf("packages/"))
+    Write-Host "Publishing $item"
     npm publish --registry "$env:ARTIFACTORY_NPM_REGISTRY" ./publish
     Invoke-Expression "cd $workingDirectory"
   }
