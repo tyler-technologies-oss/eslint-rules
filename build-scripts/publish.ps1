@@ -27,14 +27,16 @@ Set-Location $(Join-Path $PSScriptRoot ..)
 
 $packages = Get-ChildItem "packages";
 Write-Host "======Checking for package changes========"
+$workingDirectory = Get-Location
 foreach ($package in $packages) {
   $item = $package.name
   $changes = Invoke-Expression "git diff --name-only origin/master HEAD" | Where-Object { $_ -like "packages/$item/*" };
   $hasPackageChanged = $changes.count -gt 0;
+  
   if ($hasPackageChanged) {
     Write-Output "The Package $item has changed"
     Write-Output "Updating $item npm package..."
-    Invoke-Expression "cd $item"
+    Invoke-Expression "cd packages/$item"
     Write-Host "Install npm packages..."
     Invoke-Expression "npm install"
     Invoke-Expression "npm run build:publish"
@@ -45,7 +47,7 @@ foreach ($package in $packages) {
 
     Write-Host "Publishing" + $item.Substrin("packages/")
     npm publish --registry "$env:ARTIFACTORY_NPM_REGISTRY" ./publish
-    Invoke-Expression "cd .."
+    Invoke-Expression "cd $workingDirectory"
   }
 }
 
