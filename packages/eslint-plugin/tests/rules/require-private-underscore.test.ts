@@ -2,7 +2,7 @@ import { TSESLint } from '@typescript-eslint/experimental-utils';
 import rule from '../../src/rules/require-private-underscore';
 
 const parser = require.resolve('@typescript-eslint/parser');
-var eslintTester = new TSESLint.RuleTester({ parser: parser });
+const eslintTester = new TSESLint.RuleTester({ parser: parser });
 const invalidCode = `
 class Test {
     _test = '';
