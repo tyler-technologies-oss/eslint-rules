@@ -22,8 +22,11 @@ export default createRule<Options, MessageIds>({
     create: function (context) {
         function checkNode(node: TSESTree.ClassProperty | TSESTree.MethodDefinition) {
             const isPrivate = node.accessibility === 'private' || node.accessibility === 'protected';
+            const propertyName = (node.key as TSESTree.Identifier).name;
+
             if (!isPrivate && (node.key as TSESTree.Identifier).name.startsWith('_')) {
                 context.report({
+                    data: { type: node.type, nodeInfo: `_${propertyName}` },
                     messageId: 'requirePrivateUnderscore',
                     node: node,
                     fix: function (fixer) {
