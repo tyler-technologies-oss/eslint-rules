@@ -4,7 +4,14 @@
         "eslint-plugin": {
             "root": "packages/eslint-plugin",
             "type": "library"
+        },
+        "eslint-plugin-angular": {
+            "root": "packages/eslint-plugin-angular",
+            "type": "library"
+        },
+        "eslint-plugin-angular-template": {
+            "root": "packages/eslint-plugin-angular-template",
+            "type": "library"
         }
-    
     }
 }

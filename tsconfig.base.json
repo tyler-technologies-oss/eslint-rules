@@ -20,14 +20,6 @@
     "allowUnreachableCode": false,
     "declarationMap": false,
     "esModuleInterop": true,
-    "baseUrl": ".",
-    "paths": {
-      "@tylertech-eslint/eslint-plugin": [
-        "packages/eslint-plugin/dist/index"
-      ],
-      "@tylertech-eslint/eslint-plugin/*": [
-        "packages/eslint-plugin/*"
-      ],
-    }
+    "baseUrl": "."
   }
 }
