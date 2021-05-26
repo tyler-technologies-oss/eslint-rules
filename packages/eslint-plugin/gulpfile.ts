@@ -1,8 +1,3 @@
-// import { gulp.task } from 'gulp';
-// import { resolve, join } from 'path';
-// import fs from 'fs';
-// import ncp from 'ncp'
-
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs');
 // eslint-disable-next-line @typescript-eslint/no-var-requires

@@ -1,6 +1,6 @@
 {
     "name": "@tylertech-eslint/eslint-plugin",
-    "version": "0.0.2",
+    "version": "1.0.0",
     "description": "Common TypeScript lint rules/preferences for Tyler Technologies.",
     "main": "dist/index.js",
     "typings": "typings/index.d.ts",
