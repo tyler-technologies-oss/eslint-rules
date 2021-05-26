@@ -3,7 +3,7 @@
 # $test = $any.count -gt 0
 
 # Write-Output($test)
-
+Write-Output "add-eslint-rules-v0.0.7".Substring(0, "add-eslint-rules-v0.0.7".IndexOf("-v"))
 
 $packages = Get-ChildItem "packages";
 

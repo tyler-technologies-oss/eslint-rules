@@ -1,12 +1,10 @@
 param(
     [Parameter(Mandatory=$true)]
     [string]$VersionNumber,
-    [string]$Tag,
-    [string]$BranchName
+    [string]$Tag
 )
 
-Write-Output "============$branchName==============="
-Write-Output "==============$Tag==============="
+$BranchName = $Tag.Substring(0, $Tag.IndexOf('-v'))
 
 $ErrorActionPreference = "Stop";
 
