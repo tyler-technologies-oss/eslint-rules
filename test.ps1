@@ -4,7 +4,7 @@
 
 # Write-Output($test)
 Write-Output "add-eslint-rules-v0.0.7".Substring(0, "add-eslint-rules-v0.0.7".IndexOf("-v"))
-
+Write-Output "/home/runner/work/eslint-rules/eslint-rules/packages/eslint-plugin".Substring(("/home/runner/work/eslint-rules/eslint-rules/packages/eslint-plugin".IndexOf("packages/")))
 $packages = Get-ChildItem "packages";
 
 foreach ($item in $packages) {
