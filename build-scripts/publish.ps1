@@ -1,8 +1,12 @@
 param(
     [Parameter(Mandatory=$true)]
     [string]$VersionNumber,
-    [string]$Tag
+    [string]$Tag,
+    [string]$branchName
 )
+
+Write-Output "============$branchName==============="
+Write-Output "==============$Tag==============="
 
 $ErrorActionPreference = "Stop";
 
@@ -18,24 +22,38 @@ Get-Tags;
 Push-Location
 Set-Location $(Join-Path $PSScriptRoot ..)
 
-Write-Output "========OUTPUTTING VERSION NUMBER: $VersionNumber========="
-Write-Output "========OUTPUTTING VERSION NUMBER: $Tag========="
-Write-Host "Building eslint-plugin"
-Invoke-Expression "cd packages/eslint-plugin"
+# Write-Host "Building eslint-plugin"
+# Invoke-Expression "cd packages/eslint-plugin"
 
-Write-Host "Install npm packages..."
-Invoke-Expression "npm install"
-Invoke-Expression "npm run build:publish"
 
-$VersionNumber = Update-Version-Number-PackageJson $packageJson $VersionNumber $release;
-Write-Host "========== Building Version: $VersionNumber =========="
-Write-Host "##teamcity[buildNumber '$($VersionNumber)']"
 
-Write-Host "Publishing eslint-plugin"
-npm publish --registry "$env:ARTIFACTORY_NPM_REGISTRY" ./publish
+$packages = Get-ChildItem "packages";
+Write-Host "======Checking for package changes========"
+foreach ($item in $packages) {
+    $changes = Invoke-Expression "git diff --name-only master...$branchName" | Where-Object { $_ -like "packages/$item/*" };
+    $hasPackageChanged = $changes.count -gt 0;
 
-Pop-Location
-
-if ($Tag) {
-  Add-Build-Tag "$Tag"
+    if ($hasPackageChanged) {
+        Write-Output "The Package $item has changed"
+        Write-Output "Updating $item npm package..."
+    }
 }
+
+
+
+# Write-Host "Install npm packages..."
+# Invoke-Expression "npm install"
+# Invoke-Expression "npm run build:publish"
+
+# $VersionNumber = Update-Version-Number-PackageJson $packageJson $VersionNumber $release;
+# Write-Host "========== Building Version: $VersionNumber =========="
+# Write-Host "##teamcity[buildNumber '$($VersionNumber)']"
+
+# Write-Host "Publishing eslint-plugin"
+# npm publish --registry "$env:ARTIFACTORY_NPM_REGISTRY" ./publish
+
+# Pop-Location
+
+# if ($Tag) {
+#   Add-Build-Tag "$Tag"
+# }
