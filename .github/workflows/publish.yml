@@ -11,8 +11,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+          
       - run: git log
-      - run: git diff HEAD
+      - run: git diff origin/master HEAD
       - uses: actions/checkout@v2
         if: ${{ github.event_name == 'pull_request' }}
         with:

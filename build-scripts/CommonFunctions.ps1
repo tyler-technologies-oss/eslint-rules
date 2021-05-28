@@ -179,7 +179,6 @@ function Publish-DotNetCore-Package($nupkg, $endpoint, $apiKey) {
 }
 
 function Add-Build-Tag($version) {
-    Log-Message "Changing `"release`" tag to `"$VersionNumber`"";
     $tag = "$version";
     Remove-Tag $tag;
     git tag -a $tag -m "tagged by build";

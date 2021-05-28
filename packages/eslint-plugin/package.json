@@ -1,0 +1,60 @@
+{
+    "name": "@tylertech-eslint/eslint-plugin",
+    "version": "1.0.0",
+    "description": "Common TypeScript lint rules/preferences for Tyler Technologies.",
+    "main": "dist/index.js",
+    "typings": "typings/index.d.ts",
+    "scripts": {
+        "build": "rimraf ./dist && microbundle --tsconfig tsconfig.build.json --no-sourcemap --target=node --compress --format=cjs && ncp ./src/configs ./dist/configs",
+        "build:publish": "rimraf ./publish && npm run build && gulp publish",
+        "test": "jest --coverage",
+        "gulp": "gulp",
+        "rimraf": "rimraf"
+    },
+    "keywords": [
+        "eslint",
+        "rules",
+        "typescript",
+        "lint",
+        "linting",
+        "linter"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tyler-technologies/eslint-rules.git",
+        "directory": "packages/eslint-plugin"
+    },
+    "author": "Paul Lapczynski <paul.lapczynski@tylertech.com>",
+    "license": "MIT",
+    "dependencies": {
+        "@angular-eslint/eslint-plugin-template": "^12.0.0",
+        "@typescript-eslint/experimental-utils": "^4.24.0"
+    },
+    "devDependencies": {
+        "@tylertech/build-tools": "^1.2.0",
+        "@types/eslint": "^7.2.11",
+        "@types/estree": "0.0.47",
+        "@types/gulp": "^4.0.5",
+        "@types/jest": "^26.0.23",
+        "@types/ncp": "^2.0.4",
+        "@types/rimraf": "^3.0.0",
+        "@types/run-sequence": "0.0.30",
+        "@typescript-eslint/parser": "^4.24.0",
+        "eslint": "^7.27.0",
+        "gulp": "^4.0.2",
+        "gulp-modify-file": "^1.0.1",
+        "jest": "^26.6.3",
+        "microbundle": "^0.13.0",
+        "ncp": "^2.0.0",
+        "rimraf": "^3.0.2",
+        "run-sequence": "^2.2.1",
+        "standard-changelog": "^2.0.6",
+        "ts-jest": "^26.5.6",
+        "ts-node": "^7.0.1",
+        "typescript": "^4.2.4"
+    },
+    "peerDependencies": {
+        "eslint": "*",
+        "typescript": "*"
+    }
+}
