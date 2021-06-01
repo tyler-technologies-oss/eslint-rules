@@ -34,7 +34,7 @@ foreach ($package in $packages) {
     Write-Host "Install npm packages..."
     Invoke-Expression "npm install"
     Invoke-Expression "npm run build:publish"
-
+    Write-Output "THIS IS THE VERSION NUMBER BEFORE CHANGE $VersionNumber"
     $VersionNumber = Update-Version-Number-PackageJson $packageJson $VersionNumber $release;
     Write-Host "========== Building Version: $VersionNumber =========="
     Write-Host "##github[buildNumber '$($VersionNumber)']"
