@@ -1,7 +1,8 @@
 param(
   [Parameter(Mandatory = $true)]
   [string]$VersionNumber,
-  [string]$Tag
+  [string]$Tag,
+  [bool]$BuildAll
 )
 
 $ErrorActionPreference = "Stop";
@@ -26,7 +27,7 @@ foreach ($package in $packages) {
   $changes = Invoke-Expression "git diff --name-only origin/master HEAD" | Where-Object { $_ -like "packages/$item/*" };
   $hasPackageChanged = $changes.count -gt 0;
 
-  if ($hasPackageChanged) {
+   if ($hasPackageChanged -or $BuildAll) {
     Write-Output "The Package $item has changed"
     Write-Output "Updating $item npm package..."
     Invoke-Expression "cd packages/$item"
