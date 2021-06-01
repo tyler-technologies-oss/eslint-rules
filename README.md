@@ -48,7 +48,7 @@ Both angular specific packages extend @angular-eslint, and more information can 
         "*.ts"
       ],
     "extends": [
-        "plugin:@tylertech-eslint-angular/recommended"
+        "plugin:@tylertech-eslint/angular/recommended"
       ]
     }
 }
@@ -66,7 +66,7 @@ Both angular specific packages extend @angular-eslint, and more information can 
         "*.html"
       ],
     "extends": [
-        "plugin:@tylertech-eslint-angular-template/recommended"
+        "plugin:@tylertech-eslint/angular-template/recommended"
       ]
     }
 }
