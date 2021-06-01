@@ -27,7 +27,7 @@ foreach ($package in $packages) {
   $changes = Invoke-Expression "git diff --name-only origin/master HEAD" | Where-Object { $_ -like "packages/$item/*" };
   $hasPackageChanged = $changes.count -gt 0;
 
-   if ($hasPackageChanged || $BuildAll) {
+   if ($hasPackageChanged -or $BuildAll) {
     Write-Output "The Package $item has changed"
     Write-Output "Updating $item npm package..."
     Invoke-Expression "cd packages/$item"
