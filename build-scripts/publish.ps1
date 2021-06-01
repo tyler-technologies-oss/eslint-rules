@@ -27,8 +27,8 @@ foreach ($package in $packages) {
   $changes = Invoke-Expression "git diff --name-only origin/master HEAD" | Where-Object { $_ -like "packages/$item/*" };
   $hasPackageChanged = $changes.count -gt 0;
 
-  # if ($hasPackageChanged || $BuildAll) {
-  # Write-Output "The Package $item has changed"
+   if ($hasPackageChanged || $BuildAll) {
+    Write-Output "The Package $item has changed"
     Write-Output "Updating $item npm package..."
     Invoke-Expression "cd packages/$item"
     Write-Host "Install npm packages..."
@@ -42,7 +42,7 @@ foreach ($package in $packages) {
     Write-Host "Publishing $item"
     npm publish --registry "$env:ARTIFACTORY_NPM_REGISTRY" ./publish
     Invoke-Expression "cd $workingDirectory"
-  # }
+  }
 }
 
 Pop-Location
