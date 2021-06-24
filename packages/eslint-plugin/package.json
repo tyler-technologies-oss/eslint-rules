@@ -27,7 +27,9 @@
     "author": "Paul Lapczynski <paul.lapczynski@tylertech.com>",
     "license": "MIT",
     "dependencies": {
-        "@typescript-eslint/experimental-utils": "^4.24.0"
+        "@typescript-eslint/eslint-plugin": "^4.24.0",
+        "@typescript-eslint/experimental-utils": "^4.24.0",
+        "@typescript-eslint/parser": "^4.24.0"
     },
     "devDependencies": {
         "@tylertech/build-tools": "^1.2.0",
@@ -38,7 +40,6 @@
         "@types/ncp": "^2.0.4",
         "@types/rimraf": "^3.0.0",
         "@types/run-sequence": "0.0.30",
-        "@typescript-eslint/parser": "^4.24.0",
         "eslint": "^7.27.0",
         "gulp": "^4.0.2",
         "gulp-modify-file": "^1.0.1",
