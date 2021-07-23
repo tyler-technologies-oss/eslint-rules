@@ -1,5 +1,5 @@
 import { createRule } from '../utils/create-rule';
-import { TSESTree } from '@typescript-eslint/experimental-utils';
+import { AST_TOKEN_TYPES, TSESTree } from '@typescript-eslint/experimental-utils';
 
 type Options = string[];
 type MessageIds = 'requirePrivateUnderscore';
@@ -20,6 +20,8 @@ export default createRule<Options, MessageIds>({
     },
     defaultOptions: [],
     create: function (context) {
+        const sourceCode = context.getSourceCode();
+
         function checkNode(node: TSESTree.ClassProperty | TSESTree.MethodDefinition) {
             const isPrivate = node.accessibility === 'private' || node.accessibility === 'protected';
             const propertyName = (node.key as TSESTree.Identifier).name;
@@ -30,6 +32,11 @@ export default createRule<Options, MessageIds>({
                     messageId: 'requirePrivateUnderscore',
                     node: node,
                     fix: function (fixer) {
+                        const tokens = sourceCode.getTokens(node);
+                        const publicToken = tokens.find(t => t.type === AST_TOKEN_TYPES.Keyword && t.value === 'public');
+                        if (publicToken) {
+                            return fixer.replaceText(publicToken, 'private');
+                        }
                         return fixer.insertTextBefore(node, 'private ');
                     }
                 });
