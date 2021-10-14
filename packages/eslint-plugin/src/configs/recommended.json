@@ -131,7 +131,7 @@
             "off",
             "always"
         ],
-        "comma-dangle": "error",
+        "comma-dangle": "off",
         "comma-spacing": "error",
         "complexity": "off",
         "constructor-super": "error",
