@@ -4,13 +4,6 @@ on:
   push:
     branches:
       - master
-  workflow_call:
-    inputs:
-      NODE_VERSION:
-        description: "The version of Node to use when building the packages."
-        default: "14"
-        required: false
-        type: string
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,6 +23,13 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         with:
           fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        env:
+          ARTIFACTORY_TOKEN: "${{ secrets.ARTIFACTORY_TOKEN }}"
+          ARTIFACTORY_USERNAME: "${{ secrets.ARTIFACTORY_USERNAME }}"
+        with:
+          node-version: 14
       - name: Determine next version
         uses: paulhatch/semantic-version@v3.1.1
         id: semver
@@ -56,13 +56,6 @@ jobs:
           major_pattern: "(MAJOR)"
           minor_pattern: "(MINOR)"
           format: "${major}.${minor}.${patch}"
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        env:
-          ARTIFACTORY_TOKEN: "${{ secrets.ARTIFACTORY_TOKEN }}"
-          ARTIFACTORY_USERNAME: "${{ secrets.ARTIFACTORY_USERNAME }}"
-        with:
-          node-version: ${{ inputs.NODE_VERSION }}
       # Since we are running a powershell script we have to specify the "shell" parameter. The default is "bash".
       - name: Run publish.ps1
         run: |
