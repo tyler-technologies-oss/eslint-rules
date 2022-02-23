@@ -10,7 +10,6 @@ export default createRule<Options, MessageIds>({
     meta: {
         type: 'suggestion',
         docs: {
-            category: 'Best Practices',
             description: 'Requires properties or methods that start with an underscore to be marked with a private modifier.',
             recommended: 'warn'
         },
@@ -22,7 +21,7 @@ export default createRule<Options, MessageIds>({
     create: function (context) {
         const sourceCode = context.getSourceCode();
 
-        function checkNode(node: TSESTree.ClassProperty | TSESTree.MethodDefinition) {
+        function checkNode(node: TSESTree.PropertyDefinition | TSESTree.MethodDefinition) {
             const isPrivate = node.accessibility === 'private' || node.accessibility === 'protected';
             const propertyName = (node.key as TSESTree.Identifier).name;
 

@@ -23,6 +23,13 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         with:
           fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        env:
+          ARTIFACTORY_TOKEN: "${{ secrets.ARTIFACTORY_TOKEN }}"
+          ARTIFACTORY_USERNAME: "${{ secrets.ARTIFACTORY_USERNAME }}"
+        with:
+          node-version: 14
       - name: Determine next version
         uses: paulhatch/semantic-version@v3.1.1
         id: semver

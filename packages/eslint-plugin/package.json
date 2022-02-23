@@ -27,9 +27,9 @@
     "author": "Paul Lapczynski <paul.lapczynski@tylertech.com>",
     "license": "MIT",
     "dependencies": {
-        "@typescript-eslint/eslint-plugin": "^4.24.0",
-        "@typescript-eslint/experimental-utils": "^4.24.0",
-        "@typescript-eslint/parser": "^4.24.0"
+        "@typescript-eslint/eslint-plugin": "^5.12.1",
+        "@typescript-eslint/experimental-utils": "^5.12.1",
+        "@typescript-eslint/parser": "^5.12.1"
     },
     "devDependencies": {
         "@tylertech/build-tools": "^1.2.0",

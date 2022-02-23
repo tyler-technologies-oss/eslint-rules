@@ -10,7 +10,6 @@ export default createRule<Options, MessageIds>({
     meta: {
         type: 'suggestion',
         docs: {
-            category: 'Best Practices',
             description: 'Avoids inconsistent import paths.',
             recommended: 'warn'
         },
