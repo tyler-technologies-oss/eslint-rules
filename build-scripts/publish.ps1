@@ -24,7 +24,7 @@ Write-Host "======Checking for package changes========"
 $workingDirectory = Get-Location
 foreach ($package in $packages) {
   $item = $package.name
-  $changes = Invoke-Expression "git diff --name-only origin/master HEAD" | Where-Object { $_ -like "packages/$item/*" };
+  $changes = Invoke-Expression "git diff --name-only origin/main HEAD" | Where-Object { $_ -like "packages/$item/*" };
   $hasPackageChanged = $changes.count -gt 0;
 
    if ($hasPackageChanged -or $BuildAll) {
