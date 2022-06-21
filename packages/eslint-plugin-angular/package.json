@@ -31,7 +31,6 @@
         "tslint-eslint-rules": "^5.4.0"
     },
     "devDependencies": {
-        "@tylertech/build-tools": "^1.2.0",
         "@types/gulp": "^4.0.5",
         "@types/rimraf": "^3.0.0",
         "@types/run-sequence": "0.0.30",

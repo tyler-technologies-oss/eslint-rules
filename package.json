@@ -19,11 +19,9 @@
     "linting",
     "linter"
   ],
-  "author": "Paul Lapczynski <paul.lapczynski@tylertech.com>",
-  "license": "MIT",
-  "dependencies": {},
+  "license": "Apache-2.0",
+  "author": "Tyler Technologies, Inc.",
   "devDependencies": {
-    "@tylertech/build-tools": "^1.2.0",
     "@types/gulp": "^4.0.5",
     "@types/run-sequence": "0.0.30",
     "@typescript-eslint/eslint-plugin": "^5.12.1",

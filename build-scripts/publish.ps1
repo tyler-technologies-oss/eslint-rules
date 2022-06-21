@@ -40,7 +40,7 @@ foreach ($package in $packages) {
     Write-Host "##github[buildNumber '$($VersionNumber)']"
 
     Write-Host "Publishing $item"
-    npm publish --registry "$env:ARTIFACTORY_NPM_REGISTRY" ./publish
+    npm publish --access public --registry https://registry.npmjs.org/ ./publish
     Invoke-Expression "cd $workingDirectory"
   }
 }

@@ -14,22 +14,24 @@ jobs:
           
       - run: git log
       - run: git diff origin/main HEAD
+
       - uses: actions/checkout@v2
         if: ${{ github.event_name == 'pull_request' }}
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha }}
+
       - uses: actions/checkout@v2
         if: ${{ github.event_name == 'push' }}
         with:
           fetch-depth: 0
+
       - name: Setup Node
-        uses: actions/setup-node@v2
-        env:
-          ARTIFACTORY_TOKEN: "${{ secrets.ARTIFACTORY_TOKEN }}"
-          ARTIFACTORY_USERNAME: "${{ secrets.ARTIFACTORY_USERNAME }}"
+        uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: '14.x'
+          registry-url: 'https://registry.npmjs.org/'
+
       - name: Determine next version
         uses: paulhatch/semantic-version@v3.1.1
         id: semver
@@ -40,12 +42,14 @@ jobs:
           major_pattern: "(MAJOR)"
           minor_pattern: "(MINOR)"
           format: "${major}.${minor}.${patch}"
+
       - name: Get branch
         id: getbranch
         if: ${{ github.event_name == 'pull_request' }}
         run: |
           echo "##[set-output name=branch;]${GITHUB_HEAD_REF#refs/heads/}"
           echo "##[set-output name=safebranch;]$(echo -n "${GITHUB_HEAD_REF#refs/heads/}" | tr -c '[:alnum:]-' '-' | tr A-Z a-z)"
+
       - name: Determine next version (PR)
         uses: paulhatch/semantic-version@v3.1.1
         id: semverpr
@@ -56,6 +60,7 @@ jobs:
           major_pattern: "(MAJOR)"
           minor_pattern: "(MINOR)"
           format: "${major}.${minor}.${patch}"
+          
       # Since we are running a powershell script we have to specify the "shell" parameter. The default is "bash".
       - name: Run publish.ps1
         run: |
@@ -68,12 +73,5 @@ jobs:
             build-scripts/publish.ps1 -VersionNumber "${{ steps.semverpr.outputs.version }}-${{ steps.getbranch.outputs.safebranch }}" -Tag "${{ steps.getbranch.outputs.safebranch }}-v${{ steps.semverpr.outputs.version }}"
           }
         shell: pwsh
-    env:
-      # Be sure to update these with the appropriate Github secrets for your team. Do not paste actual values here.
-      ARTIFACTORY_PULL_REGISTRY: "${{ secrets.ARTIFACTORY_PULL_REGISTRY }}"
-      ARTIFACTORY_NUGET_REGISTRY: "${{ secrets.CORPDEV_ARTIFACTORY_NUGET_REGISTRY }}"
-      ARTIFACTORY_NPM_REGISTRY: "${{ secrets.CORPDEV_ARTIFACTORY_NPM_REGISTRY }}"
-      ARTIFACTORY_PUSH_REGISTRY: "${{ secrets.CORPDEV_ARTIFACTORY_PUSH_REGISTRY }}"
-      ARTIFACTORY_USERNAME: "${{ secrets.CORPDEV_ARTIFACTORY_USERNAME }}"
-      ARTIFACTORY_PASSWORD: "${{ secrets.CORPDEV_ARTIFACTORY_PASSWORD }}"
-      ARTIFACTORY_TOKEN: "${{ secrets.CORPDEV_ARTIFACTORY_TOKEN }}"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

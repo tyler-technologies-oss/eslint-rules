@@ -24,15 +24,14 @@
         "url": "https://github.com/tyler-technologies/eslint-rules.git",
         "directory": "packages/eslint-plugin"
     },
-    "author": "Paul Lapczynski <paul.lapczynski@tylertech.com>",
-    "license": "MIT",
+    "license": "Apache-2.0",
+    "author": "Tyler Technologies, Inc.",
     "dependencies": {
         "@typescript-eslint/eslint-plugin": "^5.12.1",
         "@typescript-eslint/experimental-utils": "^5.12.1",
         "@typescript-eslint/parser": "^5.12.1"
     },
     "devDependencies": {
-        "@tylertech/build-tools": "^1.2.0",
         "@types/eslint": "^7.2.11",
         "@types/estree": "0.0.47",
         "@types/gulp": "^4.0.5",

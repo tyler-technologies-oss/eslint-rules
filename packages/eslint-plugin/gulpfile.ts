@@ -8,6 +8,7 @@ const gulp = require('gulp');
 const path = require('path');
 
 
+const REPO_ROOT = path.resolve(__dirname, '../../');
 const ROOT = path.resolve(__dirname, './');
 const OUTPUT_DIR = path.join(ROOT, 'publish');
 const PACKAGE_DIST = path.join(ROOT, 'dist');
@@ -44,11 +45,18 @@ gulp.task('publish', async (done: () => void) => {
         });
     });
 
+    const copyLicense = new Promise(resolve => {
+        ncp(path.join(REPO_ROOT, 'LICENSE'), path.join(OUTPUT_DIR, 'LICENSE'), () => {
+            resolve(true)
+        });
+    });
+
     await createPublishFolder;
     await copyBuildToPublishFolder;
     await createPublishDistFolder;
     await copyPackageJson;
     await copyTypings;
+    await copyLicense;
 
     done();
 });
