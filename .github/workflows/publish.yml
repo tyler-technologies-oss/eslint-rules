@@ -74,4 +74,4 @@ jobs:
           }
         shell: pwsh
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.FORGE_NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.FORGE_NPM_TOKEN }}

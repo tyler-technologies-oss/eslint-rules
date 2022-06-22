@@ -19,13 +19,13 @@
         "linting",
         "linter"
     ],
+    "author": "Tyler Technologies, Inc.",
+    "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/tyler-technologies/eslint-rules.git",
+        "url": "https://github.com/tyler-technologies-oss/eslint-rules.git",
         "directory": "packages/eslint-plugin"
     },
-    "license": "Apache-2.0",
-    "author": "Tyler Technologies, Inc.",
     "dependencies": {
         "@typescript-eslint/eslint-plugin": "^5.12.1",
         "@typescript-eslint/experimental-utils": "^5.12.1",

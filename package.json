@@ -4,9 +4,7 @@
   "description": "Common lint rules/preferences for Tyler Technologies.",
   "typings": "typings/index.d.ts",
   "scripts": {
-    "build": "gulp build",
     "lint": "eslint . --ext .js,.ts",
-    "publish": "npm publish dist",
     "changelog": "standard-changelog -i CHANGELOG.md -k package.json"
   },
   "keywords": [
@@ -19,8 +17,13 @@
     "linting",
     "linter"
   ],
-  "license": "Apache-2.0",
   "author": "Tyler Technologies, Inc.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tyler-technologies-oss/eslint-rules.git",
+    "directory": "packages/eslint-plugin"
+  },
   "devDependencies": {
     "@types/gulp": "^4.0.5",
     "@types/run-sequence": "0.0.30",

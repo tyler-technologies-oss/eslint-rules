@@ -32,7 +32,7 @@ foreach ($package in $packages) {
     Write-Output "Updating $item npm package..."
     Invoke-Expression "cd packages/$item"
     Write-Host "Install npm packages..."
-    Invoke-Expression "npm install"
+    Invoke-Expression "npm install --ignore-scripts"
     Invoke-Expression "npm run build:publish"
     Write-Output "THIS IS THE VERSION NUMBER BEFORE CHANGE $VersionNumber"
     $VersionNumber = Update-Version-Number-PackageJson $packageJson $VersionNumber $release;
@@ -40,7 +40,8 @@ foreach ($package in $packages) {
     Write-Host "##github[buildNumber '$($VersionNumber)']"
 
     Write-Host "Publishing $item"
-    npm publish --access public --registry https://registry.npmjs.org/ ./publish
+    npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+    npm publish --access public --ignore-scrips ./publish
     Invoke-Expression "cd $workingDirectory"
   }
 }
