@@ -33,7 +33,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org/'
 
       - name: Determine next version
-        uses: paulhatch/semantic-version@v5.0.3
+        uses: paulhatch/semantic-version@v3.1.1
         id: semver
         if: ${{ github.event_name == 'push' }}
         with:
@@ -41,7 +41,7 @@ jobs:
           tag_prefix: "v"
           major_pattern: "(MAJOR)"
           minor_pattern: "(MINOR)"
-          version_format: "${major}.${minor}.${patch}"
+          format: "${major}.${minor}.${patch}"
 
       - name: Get branch
         id: getbranch
@@ -51,7 +51,7 @@ jobs:
           echo "##[set-output name=safebranch;]$(echo -n "${GITHUB_HEAD_REF#refs/heads/}" | tr -c '[:alnum:]-' '-' | tr A-Z a-z)"
 
       - name: Determine next version (PR)
-        uses: paulhatch/semantic-version@v5.0.3
+        uses: paulhatch/semantic-version@v3.1.1
         id: semverpr
         if: ${{ github.event_name == 'pull_request' }}
         with:
@@ -59,7 +59,7 @@ jobs:
           tag_prefix: ${{ steps.getbranch.outputs.safebranch }}-v
           major_pattern: "(MAJOR)"
           minor_pattern: "(MINOR)"
-          version_format: "${major}.${minor}.${patch}"
+          format: "${major}.${minor}.${patch}"
           
       # Since we are running a powershell script we have to specify the "shell" parameter. The default is "bash".
       - name: Run publish.ps1
