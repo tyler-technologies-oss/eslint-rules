@@ -3,6 +3,7 @@ import { resolve, join } from 'path';
 import fs from 'fs';
 import ncp from 'ncp'
 
+const REPO_ROOT = resolve(__dirname, '../../');
 const ROOT = resolve(__dirname, './');
 const OUTPUT_DIR = join(ROOT, 'publish');
 const PACKAGE_DIST = join(ROOT, 'dist');
@@ -39,11 +40,18 @@ task('publish', async done => {
         });
     });
 
+    const copyLicense = new Promise(resolve => {
+        ncp(join(REPO_ROOT, 'LICENSE'), join(OUTPUT_DIR, 'LICENSE'), () => {
+            resolve(true)
+        });
+    });
+
     await createPublishFolder;
     await copyBuildToPublishFolder;
     await createPublishDistFolder;
     await copyPackageJson;
     await copyTypings;
+    await copyLicense;
 
     done();
 });

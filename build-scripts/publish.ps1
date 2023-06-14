@@ -24,7 +24,7 @@ Write-Host "======Checking for package changes========"
 $workingDirectory = Get-Location
 foreach ($package in $packages) {
   $item = $package.name
-  $changes = Invoke-Expression "git diff --name-only origin/master HEAD" | Where-Object { $_ -like "packages/$item/*" };
+  $changes = Invoke-Expression "git diff --name-only origin/main HEAD" | Where-Object { $_ -like "packages/$item/*" };
   $hasPackageChanged = $changes.count -gt 0;
 
    if ($hasPackageChanged -or $BuildAll) {
@@ -32,7 +32,7 @@ foreach ($package in $packages) {
     Write-Output "Updating $item npm package..."
     Invoke-Expression "cd packages/$item"
     Write-Host "Install npm packages..."
-    Invoke-Expression "npm install"
+    Invoke-Expression "npm install --ignore-scripts"
     Invoke-Expression "npm run build:publish"
     Write-Output "THIS IS THE VERSION NUMBER BEFORE CHANGE $VersionNumber"
     $VersionNumber = Update-Version-Number-PackageJson $packageJson $VersionNumber $release;
@@ -40,7 +40,8 @@ foreach ($package in $packages) {
     Write-Host "##github[buildNumber '$($VersionNumber)']"
 
     Write-Host "Publishing $item"
-    npm publish --registry "$env:ARTIFACTORY_NPM_REGISTRY" ./publish
+    npm config set //registry.npmjs.org/:_authToken $env:NPM_TOKEN
+    npm publish --access public --ignore-scripts ./publish
     Invoke-Expression "cd $workingDirectory"
   }
 }
