@@ -39,16 +39,21 @@
                 "accessibility": "explicit"
             }
         ],
+        "@typescript-eslint/explicit-function-return-type": [
+            "error",
+            { "allowExpressions": true }
+        ],
         "@typescript-eslint/indent": [
             "error",
             2,
             {
-                "FunctionDeclaration": {
-                    "parameters": "first"
-                },
-                "FunctionExpression": {
-                    "parameters": "first"
-                }
+                "SwitchCase": 1,
+                "MemberExpression": "off",
+                "ignoredNodes": [
+                    "ArrowFunctionExpression Identifier",
+                    "ArrowFunctionExpression BlockStatement",
+                    "TSTypeParameterInstantiation"
+                ]
             }
         ],
         "@typescript-eslint/member-delimiter-style": [
@@ -67,7 +72,7 @@
         "@typescript-eslint/member-ordering": "off",
         "@typescript-eslint/naming-convention": "off",
         "@typescript-eslint/no-empty-function": "off",
-        "@typescript-eslint/no-empty-interface": "error",
+        "@typescript-eslint/no-empty-interface": ["error", { "allowSingleExtends": true }],
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-inferrable-types": [
             "error",
@@ -88,6 +93,7 @@
         "@typescript-eslint/no-unused-expressions": "error",
         "@typescript-eslint/no-use-before-define": "off",
         "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/no-extra-parens": ["error", "all", { "nestedBinaryExpressions": false }],
         "@typescript-eslint/prefer-for-of": "error",
         "@typescript-eslint/prefer-function-type": "error",
         "@typescript-eslint/prefer-namespace-keyword": "error",
@@ -112,12 +118,16 @@
         ],
         "@typescript-eslint/type-annotation-spacing": "error",
         "@typescript-eslint/unified-signatures": "error",
-        "arrow-body-style": "error",
+        "@typescript-eslint/comma-dangle": "off",
+        "@typescript-eslint/comma-spacing": ["error"],
+        "@typescript-eslint/arrow-body-style": "off",
+        "arrow-body-style": "off",
         "arrow-parens": [
             "off",
             "always"
         ],
         "comma-dangle": "off",
+        "comma-spacing": "error",
         "complexity": "off",
         "constructor-super": "error",
         "curly": "error",
@@ -142,14 +152,7 @@
         "id-match": "error",
         "import/order": "off",
         "max-classes-per-file": "off",
-        "max-len": [
-            "error",
-            {
-                "code": 200,
-                "ignorePattern": "^import\\s.+\\sfrom\\s.+;$",
-                "ignoreUrls": true
-            }
-        ],
+        "max-len": "off",
         "new-parens": "error",
         "no-bitwise": "error",
         "no-caller": "error",
@@ -183,6 +186,7 @@
         "no-debugger": "error",
         "no-empty": "off",
         "no-eval": "error",
+        "no-extra-parens": "off",
         "no-fallthrough": "error",
         "no-invalid-this": "off",
         "no-multiple-empty-lines": "off",
@@ -192,7 +196,7 @@
             "rxjs/Rx"
         ],
         "no-throw-literal": "error",
-        "no-trailing-spaces": "error",
+        "no-trailing-spaces": ["error", { "ignoreComments": true, "skipBlankLines": true }],
         "no-undef-init": "error",
         "no-underscore-dangle": "off",
         "no-unsafe-finally": "error",
@@ -206,7 +210,8 @@
         "prefer-const": "error",
         "quote-props": [
             "error",
-            "as-needed"
+            "as-needed",
+            { "unnecessary": false }
         ],
         "radix": "error",
         "space-before-function-paren": [
