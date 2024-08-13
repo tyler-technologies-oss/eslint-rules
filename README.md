@@ -1,7 +1,7 @@
 # eslint-rules
 Repository for Tyler recommended eslint rules
 
-
+ 
 
 ## Packages included in this project
 
