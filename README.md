@@ -147,7 +147,7 @@ Therefore, the critical part of our configuration is the `"overrides"` array:
   ]
 }
 ```
-
+ 
 By setting up our config in this way, we have complete control over what rules etc apply to what file types and our separate concerns remain clearer and easier to maintain.
 
 ### Seriously, move (mostly) all configuration into `overrides`
