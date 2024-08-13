@@ -1,5 +1,5 @@
 import { createRule } from '../utils/create-rule';
-import { AST_TOKEN_TYPES, TSESTree } from '@typescript-eslint/experimental-utils';
+import { AST_TOKEN_TYPES, TSESTree } from '@typescript-eslint/utils';
 
 type Options = string[];
 type MessageIds = 'requirePrivateUnderscore';
@@ -11,15 +11,15 @@ export default createRule<Options, MessageIds>({
         type: 'suggestion',
         docs: {
             description: 'Requires properties or methods that start with an underscore to be marked with a private modifier.',
-            recommended: 'warn'
+            recommended: 'recommended'
         },
-        schema: {},
-        messages: { requirePrivateUnderscore: 'Private ${type} must start with an underscore: ${nodeInfo}' },
+        schema: [],
+        messages: { requirePrivateUnderscore: 'Private {{type}} must start with an underscore: {{nodeInfo}}' },
         fixable: 'code'
     },
     defaultOptions: [],
     create: function (context) {
-        const sourceCode = context.getSourceCode();
+        const sourceCode = context.sourceCode;
 
         function checkNode(node: TSESTree.PropertyDefinition | TSESTree.MethodDefinition) {
             const isPrivate = node.accessibility === 'private' || node.accessibility === 'protected';
@@ -43,7 +43,7 @@ export default createRule<Options, MessageIds>({
         }
 
         return {
-            ClassProperty(node) {
+            PropertyDefinition(node) {
                 checkNode(node);
             },
             MethodDefinition(node) {

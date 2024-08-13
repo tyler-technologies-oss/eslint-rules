@@ -1,5 +1,5 @@
 import { createRule } from '../utils/create-rule';
-import { TSESTree } from '@typescript-eslint/experimental-utils';
+import { TSESTree } from '@typescript-eslint/utils';
 
 type Options = string[];
 type MessageIds = 'requirePrivateModifier';
@@ -11,9 +11,9 @@ export default createRule<Options, MessageIds>({
         type: 'suggestion',
         docs: {
             description: 'Requires properties or methods that start with an underscore to be marked with a private modifier.',
-            recommended: 'warn'
+            recommended: 'recommended'
         },
-        schema: {},
+        schema: [],
         messages: { requirePrivateModifier: '{{type}} starting with an underscore must be marked as private: {{nodeInfo}}' },
         fixable: 'code'
     },
@@ -36,7 +36,7 @@ export default createRule<Options, MessageIds>({
         }
 
         return {
-            ClassProperty(node) {
+            PropertyDefinition(node) {
                 checkNode(node);
             },
             MethodDefinition(node) {

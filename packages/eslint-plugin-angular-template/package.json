@@ -28,23 +28,23 @@
         "directory": "packages/eslint-plugin"
     },
     "dependencies": {
-        "@angular-eslint/eslint-plugin-template": "^12.0.0",
-        "@typescript-eslint/experimental-utils": "^4.24.0"
+        "@angular-eslint/eslint-plugin-template": "^18.3.0",
+        "@typescript-eslint/utils": "^7.1.0"
     },
     "devDependencies": {
         "@types/gulp": "^4.0.5",
         "@types/ncp": "^2.0.4",
         "@types/rimraf": "^3.0.0",
-        "@types/run-sequence": "0.0.30",
+        "@types/run-sequence": "0.0.34",
         "gulp-modify-file": "^1.0.1",
         "microbundle": "^0.13.0",
         "ncp": "^2.0.0",
         "rimraf": "^3.0.2",
         "run-sequence": "^2.2.1",
         "standard-changelog": "^2.0.6",
-        "ts-node": "^7.0.1",
-        "typescript": "^3.1.6",
-        "gulp": "^4.0.2"
+        "ts-node": "^10.9.2",
+        "typescript": "^5.1.6",
+        "gulp": "^5.0.0"
     },
     "peerDependencies": {
         "eslint": "*",
