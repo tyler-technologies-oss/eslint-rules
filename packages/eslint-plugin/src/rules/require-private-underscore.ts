@@ -36,6 +36,7 @@ export default createRule<Options, MessageIds>({
                         if (publicToken) {
                             return fixer.replaceText(publicToken, 'private');
                         }
+                        
                         return fixer.insertTextBefore(node, 'private ');
                     }
                 });
