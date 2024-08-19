@@ -47,7 +47,7 @@ jobs:
 
       - name: Get branch
         id: getbranch
-        if: ${{ github.event_name == 'pull_request' }}
+        if: ${{ github.event_name == 'pull_request_target' }}
         run: |
           echo "##[set-output name=branch;]${GITHUB_HEAD_REF#refs/heads/}"
           echo "##[set-output name=safebranch;]$(echo -n "${GITHUB_HEAD_REF#refs/heads/}" | tr -c '[:alnum:]-' '-' | tr A-Z a-z)"
@@ -55,7 +55,7 @@ jobs:
       - name: Determine next version (PR)
         uses: paulhatch/semantic-version@v3.1.1
         id: semverpr
-        if: ${{ github.event_name == 'pull_request' }}
+        if: ${{ github.event_name == 'pull_request_target' }}
         with:
           branch: ${{ steps.getbranch.outputs.branch }}
           tag_prefix: ${{ steps.getbranch.outputs.safebranch }}-v
