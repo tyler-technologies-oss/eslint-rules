@@ -22,6 +22,7 @@ export default createRule<Options, MessageIds>({
         function checkNode(node: TSESTree.PropertyDefinition | TSESTree.MethodDefinition) {
             const isPrivate = node.accessibility === 'private' || node.accessibility === 'protected';
             const propertyName = (node.key as TSESTree.Identifier).name;
+            console.log('test');
 
             if (isPrivate && !propertyName.startsWith('_')) {
                 context.report({
