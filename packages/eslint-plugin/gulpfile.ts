@@ -7,7 +7,6 @@ const gulp = require('gulp');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path');
 
-
 const REPO_ROOT = path.resolve(__dirname, '../../');
 const ROOT = path.resolve(__dirname, './');
 const OUTPUT_DIR = path.join(ROOT, 'publish');
