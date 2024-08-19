@@ -1,4 +1,4 @@
-name: Build
+name: Build PR
 on:
   pull_request_target:
 jobs:
@@ -40,6 +40,7 @@ jobs:
           major_pattern: "(MAJOR)"
           minor_pattern: "(MINOR)"
           version_format: "${major}.${minor}.${patch}"
+          debug: true
           
       # Since we are running a powershell script we have to specify the "shell" parameter. The default is "bash".
       - name: Run publish.ps1
