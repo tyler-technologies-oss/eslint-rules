@@ -1,8 +1,6 @@
 name: Build
 on:
-  push:
-    branches:
-      - main
+  pull_request_target:
 jobs:
   build:
     permissions:
@@ -17,15 +15,9 @@ jobs:
       - run: git diff origin/main HEAD
 
       - uses: actions/checkout@v3
-        if: ${{ github.event_name == 'pull_request_target' }}
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha }}
-
-      - uses: actions/checkout@v3
-        if: ${{ github.event_name == 'push' }}
-        with:
-          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -33,20 +25,8 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org/'
 
-      - name: Determine next version
-        uses: paulhatch/semantic-version@v5.4.0
-        id: semver
-        if: ${{ github.event_name == 'push' }}
-        with:
-          branch: "main"
-          tag_prefix: "v"
-          major_pattern: "(MAJOR)"
-          minor_pattern: "(MINOR)"
-          version_format: "${major}.${minor}.${patch}"
-
       - name: Get branch
         id: getbranch
-        if: ${{ github.event_name == 'pull_request_target' }}
         run: |
           echo "##[set-output name=branch;]${GITHUB_HEAD_REF#refs/heads/}"
           echo "##[set-output name=safebranch;]$(echo -n "${GITHUB_HEAD_REF#refs/heads/}" | tr -c '[:alnum:]-' '-' | tr A-Z a-z)"
@@ -54,7 +34,6 @@ jobs:
       - name: Determine next version (PR)
         uses: paulhatch/semantic-version@v5.4.0
         id: semverpr
-        if: ${{ github.event_name == 'pull_request_target' }}
         with:
           branch: ${{ steps.getbranch.outputs.branch }}
           tag_prefix: ${{ steps.getbranch.outputs.safebranch }}-v
@@ -67,12 +46,7 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "GitHub Actions"
-          if ($env:GITHUB_EVENT_NAME -eq "push") {
-            build-scripts/publish.ps1 -VersionNumber "${{ steps.semver.outputs.version }}" -BuildAll $True
-          }
-          else {
-            build-scripts/publish.ps1 -VersionNumber "${{ steps.semverpr.outputs.version }}-${{ steps.getbranch.outputs.safebranch }}" -Tag "canary"
-          }
+          build-scripts/publish.ps1 -VersionNumber "${{ steps.semverpr.outputs.version }}-${{ steps.getbranch.outputs.safebranch }}" -Tag "canary"
         shell: pwsh
         env:
           NPM_TOKEN: ${{ secrets.FORGE_NPM_TOKEN }}
