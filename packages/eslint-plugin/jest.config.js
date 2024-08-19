@@ -1,5 +1,5 @@
-
-export default  {
+/** @type {import('jest').Config} */
+const config = {
   testEnvironment: 'node',
   transform: {
     '^.+\\.ts?$': 'ts-jest',
@@ -10,3 +10,5 @@ export default  {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   coverageReporters: ['text-summary', 'lcov'],
 };
+
+module.exports = config;

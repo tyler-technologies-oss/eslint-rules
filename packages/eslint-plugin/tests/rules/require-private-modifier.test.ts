@@ -1,4 +1,4 @@
-import { TSESLint } from '@typescript-eslint/experimental-utils';
+import { TSESLint } from '@typescript-eslint/utils';
 import rule from '../../src/rules/require-private-modifier';
 
 const parser = require.resolve('@typescript-eslint/parser');
