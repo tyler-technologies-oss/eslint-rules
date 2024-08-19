@@ -41,7 +41,13 @@ foreach ($package in $packages) {
 
     Write-Host "Publishing $item"
     npm config set //registry.npmjs.org/:_authToken $env:NPM_TOKEN
-    npm publish --access public --ignore-scripts ./publish --tag $Tag
+
+    if($Tag) {
+      npm publish --access public --ignore-scripts ./publish --tag $Tag
+    } else {
+      npm publish --access public --ignore-scripts ./publish
+    }
+
     Invoke-Expression "cd $workingDirectory"
   }
 }
