@@ -20,6 +20,7 @@ export default createRule<Options, MessageIds>({
     defaultOptions: [],
     create: function (context) {
         const sourceCode = context.getSourceCode();
+        console.log('test')
 
         function checkNode(node: TSESTree.PropertyDefinition | TSESTree.MethodDefinition) {
             const isPrivate = node.accessibility === 'private' || node.accessibility === 'protected';
