@@ -35,7 +35,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org/'
 
       - name: Determine next version
-        uses: paulhatch/semantic-version@v3.1.1
+        uses: paulhatch/semantic-version@v5.4.0
         id: semver
         if: ${{ github.event_name == 'push' }}
         with:
@@ -43,7 +43,7 @@ jobs:
           tag_prefix: "v"
           major_pattern: "(MAJOR)"
           minor_pattern: "(MINOR)"
-          format: "${major}.${minor}.${patch}"
+          version_format: "${major}.${minor}.${patch}"
 
       - name: Get branch
         id: getbranch
@@ -53,7 +53,7 @@ jobs:
           echo "##[set-output name=safebranch;]$(echo -n "${GITHUB_HEAD_REF#refs/heads/}" | tr -c '[:alnum:]-' '-' | tr A-Z a-z)"
 
       - name: Determine next version (PR)
-        uses: paulhatch/semantic-version@v3.1.1
+        uses: paulhatch/semantic-version@v5.4.0
         id: semverpr
         if: ${{ github.event_name == 'pull_request_target' }}
         with:
@@ -61,7 +61,7 @@ jobs:
           tag_prefix: ${{ steps.getbranch.outputs.safebranch }}-v
           major_pattern: "(MAJOR)"
           minor_pattern: "(MINOR)"
-          format: "${major}.${minor}.${patch}"
+          version_format: "${major}.${minor}.${patch}"
           
       # Since we are running a powershell script we have to specify the "shell" parameter. The default is "bash".
       - name: Run publish.ps1
@@ -69,10 +69,10 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "GitHub Actions"
           if ($env:GITHUB_EVENT_NAME -eq "push") {
-            build-scripts/publish.ps1 -VersionNumber "${{ steps.semver.outputs.version }}" -BuildAll $True -Tag "v${{ steps.semver.outputs.version }}"
+            build-scripts/publish.ps1 -VersionNumber "${{ steps.semver.outputs.version }}" -BuildAll $True
           }
           else {
-            build-scripts/publish.ps1 -VersionNumber "${{ steps.semverpr.outputs.version }}-${{ steps.getbranch.outputs.safebranch }}" -Tag "${{ steps.getbranch.outputs.safebranch }}-v${{ steps.semverpr.outputs.version }}"
+            build-scripts/publish.ps1 -VersionNumber "${{ steps.semverpr.outputs.version }}-${{ steps.getbranch.outputs.safebranch }}" -Tag "canary"
           }
         shell: pwsh
         env:
