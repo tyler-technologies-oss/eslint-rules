@@ -62,7 +62,6 @@ jobs:
           major_pattern: "(MAJOR)"
           minor_pattern: "(MINOR)"
           format: "${major}.${minor}.${patch}"
-          bump_each_commit: true
           
       # Since we are running a powershell script we have to specify the "shell" parameter. The default is "bash".
       - name: Run publish.ps1
