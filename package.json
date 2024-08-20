@@ -1,6 +1,6 @@
 {
   "name": "@tylertech-eslint/tylertech-eslint",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Common lint rules/preferences for Tyler Technologies.",
   "typings": "typings/index.d.ts",
   "scripts": {
