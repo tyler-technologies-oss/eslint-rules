@@ -39,4 +39,3 @@ export default createRule<Options, MessageIds>({
         }
     }
 });
-
