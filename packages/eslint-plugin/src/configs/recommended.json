@@ -6,7 +6,7 @@
         "@tylertech-eslint/require-private-underscore": "error",
         "@typescript-eslint/adjacent-overload-signatures": "error",
         "@typescript-eslint/array-type": "off",
-        "@typescript-eslint/no-restricted-types": [
+        "@typescript-eslint/ban-types": [
             "error",
             {
                 "types": {
