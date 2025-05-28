@@ -1,9 +1,9 @@
 import { RuleTester } from 'eslint';
 import rule from '../../src/rules/invalid-relative-Import-prefix';
 
-const eslintTester = new RuleTester({ parserOptions: { ecmaVersion: 2020, sourceType: "module" } });
+const ruleTester = new RuleTester({ languageOptions: { ecmaVersion: 2020, sourceType: "module" } });
 
-eslintTester.run('invalid-relative-import-prefix', rule as any, {
+ruleTester.run('invalid-relative-import-prefix', rule as any, {
     valid: ['import test from "../../test"'],
     invalid: [
         {

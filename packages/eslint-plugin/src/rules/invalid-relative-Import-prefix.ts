@@ -10,7 +10,6 @@ export default createRule<Options, MessageIds>({
         type: 'suggestion',
         docs: {
             description: 'Avoids inconsistent import paths.',
-            recommended: 'recommended'
         },
         schema: [],
         messages: { invalidRelativeImportPrefix: 'Relative import statements cannot start with "./../' },
