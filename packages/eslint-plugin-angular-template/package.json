@@ -4,7 +4,7 @@
   "description": "Common angular template lint rules/preferences for Tyler Technologies. Compatible with ESLint v9+ (Flat Config only).",
   "type": "module",
   "exports": {
-    ".": "./dist/index.js",
+    ".": "./dist/index.esm.js",
     "./configs/recommended": "./dist/configs/recommended.config.js"
   },
   "main": "dist/index.js",
