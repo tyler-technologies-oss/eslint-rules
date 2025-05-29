@@ -1,8 +1,12 @@
-// ESLint v9 compatible index file
-import { rules } from './rules/index';
-
 // @ts-ignore - Import JS file in TypeScript
 import recommended from './configs/recommended.js';
+import { rules } from './rules/index';
 
-// Export all components for ESLint v9 compatibility
-export { rules, recommended };
+
+const plugin = {
+	configs: { recommended },
+	rules,
+	processors: {},
+};
+
+export default plugin;

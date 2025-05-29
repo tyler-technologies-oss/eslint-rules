@@ -22,6 +22,7 @@ export default [
       '@typescript-eslint': typescriptPlugin,
       '@tylertech-eslint': { rules }
     },
+    // TODO: Do we need to list out the rules from ../rules/index.js here?
     rules: {
       '@tylertech-eslint/invalid-relative-import-prefix': 'error',
       '@tylertech-eslint/require-private-modifier': 'error',

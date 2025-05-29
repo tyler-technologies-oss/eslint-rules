@@ -4,13 +4,12 @@
   "description": "Common TypeScript/Angular lint rules/preferences for Tyler Technologies. Compatible with ESLint v9+ (Flat Config only).",
   "type": "module",
   "exports": {
-    ".": "./dist/index.esm.js",
-    "./configs/recommended": "./dist/configs/recommended.js"
+    ".": "./dist/index.esm.js"
   },
   "main": "dist/index.js",
   "typings": "typings/index.d.ts",
   "scripts": {
-    "build": "rimraf ./dist && microbundle --tsconfig tsconfig.build.json --no-sourcemap --target=node --compress --format=esm && ncp ./src/configs ./dist/configs",
+    "build": "rimraf ./dist && microbundle --tsconfig tsconfig.build.json --no-sourcemap --target=node --compress --format=esm",
     "build:publish": "rimraf ./publish && npm run build && gulp publish",
     "gulp": "gulp",
     "rimraf": "rimraf"
