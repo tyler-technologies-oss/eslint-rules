@@ -1,4 +1,5 @@
 import templatePlugin from '@angular-eslint/eslint-plugin-template';
+import templateParser from '@angular-eslint/template-parser';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
