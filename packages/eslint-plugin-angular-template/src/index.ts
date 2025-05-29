@@ -1,3 +1,4 @@
-// Note: For ESM/Flat config, import the config in your ESLint flat config file directly.
-// import recommended from './configs/recommended.config.js';
-export {};
+// @ts-ignore - Import JS file in TypeScript
+import recommended from './configs/recommended.config.js';
+
+export { recommended };

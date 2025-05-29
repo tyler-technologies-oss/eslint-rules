@@ -1,4 +1,3 @@
-// Flat config base for ESLint v9
 export default [
   {
     languageOptions: {
