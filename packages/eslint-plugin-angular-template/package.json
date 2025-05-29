@@ -2,10 +2,15 @@
   "name": "@tylertech-eslint/eslint-plugin-angular-template",
   "version": "1.0.0",
   "description": "Common angular template lint rules/preferences for Tyler Technologies. Compatible with ESLint v9+ (Flat Config only).",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./configs/recommended": "./dist/configs/recommended.config.js"
+  },
   "main": "dist/index.js",
   "typings": "typings/index.d.ts",
   "scripts": {
-    "build": "rimraf ./dist && microbundle --tsconfig tsconfig.build.json --no-sourcemap --target=node --compress --format=cjs && ncp ./src/configs ./dist/configs",
+    "build": "rimraf ./dist && microbundle --tsconfig tsconfig.build.json --no-sourcemap --target=node --compress --format=esm && ncp ./src/configs ./dist/configs",
     "build:publish": "rimraf ./publish && npm run build && gulp publish",
     "gulp": "gulp",
     "rimraf": "rimraf"
@@ -29,6 +34,7 @@
   },
   "dependencies": {
     "@angular-eslint/eslint-plugin-template": "^19.6.0",
+    "@angular-eslint/template-parser": "^19.6.0",
     "@typescript-eslint/utils": "^8.33.0"
   },
   "devDependencies": {

@@ -1,8 +1,22 @@
-import base from './base.config.js';
+import typescriptParser from '@typescript-eslint/parser';
+import typescriptPlugin from '@typescript-eslint/eslint-plugin';
+import { rules } from '../rules/index.js';
 
 export default [
-  ...base,
   {
+    languageOptions: {
+      parser: typescriptParser,
+      parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: 'module',
+        project: './tsconfig.json',
+        tsconfigRootDir: __dirname
+      }
+    },
+    plugins: {
+      '@typescript-eslint': typescriptPlugin,
+      '@tylertech-eslint': { rules }
+    },
     rules: {
       '@tylertech-eslint/invalid-relative-import-prefix': 'error',
       '@tylertech-eslint/require-private-modifier': 'error',

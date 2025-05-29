@@ -1,8 +1,21 @@
-import base from './base.config.js';
+import typescriptParser from '@typescript-eslint/parser';
+import angularPlugin from '@angular-eslint/eslint-plugin';
 
 export default [
-  ...base,
   {
+    languageOptions: {
+      parser: typescriptParser,
+      parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: 'module',
+        project: './tsconfig.json',
+        tsconfigRootDir: __dirname
+      }
+    },
+    plugins: {
+      '@typescript-eslint': typescriptPlugin,
+      '@angular-eslint': angularPlugin,
+    },
     rules: {
       '@angular-eslint/directive-selector': [
         'error',

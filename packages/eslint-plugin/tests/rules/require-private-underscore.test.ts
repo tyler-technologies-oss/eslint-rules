@@ -1,8 +1,13 @@
 import { TSESLint } from '@typescript-eslint/utils';
 import rule from '../../src/rules/require-private-underscore';
 
-const parser = require.resolve('@typescript-eslint/parser');
-const eslintTester = new TSESLint.RuleTester({ parser: parser });
+const eslintTester = new TSESLint.RuleTester({
+  parser: require.resolve('@typescript-eslint/parser'),
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module'
+  }
+});
 const invalidCode = `
 class Test {
     _test = '';
