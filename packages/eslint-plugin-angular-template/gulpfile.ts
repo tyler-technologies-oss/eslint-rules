@@ -1,8 +1,11 @@
 import { task } from 'gulp';
-import { resolve, join } from 'path';
+import { resolve, join, dirname } from 'path';
 import fs from 'fs';
 import ncp from 'ncp'
+import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const REPO_ROOT = resolve(__dirname, '../../');
 const ROOT = resolve(__dirname, './');
 const OUTPUT_DIR = join(ROOT, 'publish');
