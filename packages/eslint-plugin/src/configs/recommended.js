@@ -1,6 +1,6 @@
 import typescriptParser from '@typescript-eslint/parser';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
-import { rules } from '../rules/index.js';
+import customRulesPlugin from '../rules/index.js';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // TODO: Remove
-console.log("### @tylertech-eslint/eslint-plugin ### Version: 1.0.4 ###");
+console.log("### @tylertech-eslint/eslint-plugin ### Version: 1.0.9 ###");
 
 export default [
   {
@@ -23,7 +23,7 @@ export default [
     },
     plugins: {
       '@typescript-eslint': typescriptPlugin,
-      '@tylertech-eslint': { rules }
+      '@tylertech-eslint': customRulesPlugin
     },
     rules: {
       '@tylertech-eslint/invalid-relative-import-prefix': 'error',
@@ -31,31 +31,32 @@ export default [
       '@tylertech-eslint/require-private-underscore': 'error',
       '@typescript-eslint/adjacent-overload-signatures': 'error',
       '@typescript-eslint/array-type': 'off',
-      '@typescript-eslint/ban-types': [
-        'error',
-        {
-          types: {
-            Object: {
-              message: 'Avoid using the `Object` type. Did you mean `object`?'
-            },
-            Function: {
-              message: 'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.'
-            },
-            Boolean: {
-              message: 'Avoid using the `Boolean` type. Did you mean `boolean`?'
-            },
-            Number: {
-              message: 'Avoid using the `Number` type. Did you mean `number`?'
-            },
-            String: {
-              message: 'Avoid using the `String` type. Did you mean `string`?'
-            },
-            Symbol: {
-              message: 'Avoid using the `Symbol` type. Did you mean `symbol`?'
-            }
-          }
-        }
-      ],
+      // TODO: This rules has been migrated to the: @eslint-community/eslint-plugin-ban package
+      // '@typescript-eslint/ban-types': [
+      //   'error',
+      //   {
+      //     types: {
+      //       Object: {
+      //         message: 'Avoid using the `Object` type. Did you mean `object`?'
+      //       },
+      //       Function: {
+      //         message: 'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.'
+      //       },
+      //       Boolean: {
+      //         message: 'Avoid using the `Boolean` type. Did you mean `boolean`?'
+      //       },
+      //       Number: {
+      //         message: 'Avoid using the `Number` type. Did you mean `number`?'
+      //       },
+      //       String: {
+      //         message: 'Avoid using the `String` type. Did you mean `string`?'
+      //       },
+      //       Symbol: {
+      //         message: 'Avoid using the `Symbol` type. Did you mean `symbol`?'
+      //       }
+      //     }
+      //   }
+      // ],
       '@typescript-eslint/consistent-type-assertions': 'error',
       '@typescript-eslint/dot-notation': 'error',
       '@typescript-eslint/explicit-member-accessibility': [
@@ -81,6 +82,20 @@ export default [
           ]
         }
       ],
+      // TODO: This rule has been deprecated. Just expect Prettier or other formatters to handle this...?
+      // '@typescript-eslint/member-delimiter-style': [
+      //   'error',
+      //   {
+      //     multiline: {
+      //       delimiter: 'semi',
+      //       requireLast: true
+      //     },
+      //     singleline: {
+      //       delimiter: 'semi',
+      //       requireLast: false
+      //     }
+      //   }
+      // ],
       '@typescript-eslint/member-ordering': 'off',
       '@typescript-eslint/naming-convention': 'off',
       '@typescript-eslint/no-empty-function': 'off',
