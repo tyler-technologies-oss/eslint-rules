@@ -1,4 +1,4 @@
-// @ts-ignore - Import JS file in TypeScript
+// @ts-expect-error - Import JS file in TypeScript
 import recommended from './configs/recommended.js';
 
 const plugin = {
