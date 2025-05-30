@@ -1,6 +1,6 @@
 {
   "name": "@tylertech-eslint/eslint-plugin-angular-template",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Common angular template lint rules/preferences for Tyler Technologies. Compatible with ESLint v9+ (Flat Config only).",
   "type": "module",
   "exports": {

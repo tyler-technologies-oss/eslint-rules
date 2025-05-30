@@ -7,12 +7,15 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// TODO: Remove
+console.log("### @tylertech-eslint/eslint-plugin ### Version: 1.0.4 ###");
+
 export default [
   {
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
-        ecmaVersion: 2020,
+        ecmaVersion: "latest",
         sourceType: 'module',
         project: './tsconfig.json',
         tsconfigRootDir: __dirname
@@ -22,7 +25,6 @@ export default [
       '@typescript-eslint': typescriptPlugin,
       '@tylertech-eslint': { rules }
     },
-    // TODO: Do we need to list out the rules from ../rules/index.js here?
     rules: {
       '@tylertech-eslint/invalid-relative-import-prefix': 'error',
       '@tylertech-eslint/require-private-modifier': 'error',
@@ -66,7 +68,7 @@ export default [
         'error',
         { allowExpressions: true }
       ],
-      '@typescript-eslint/indent': [
+      'indent': [
         'error',
         2,
         {
@@ -77,19 +79,6 @@ export default [
             'ArrowFunctionExpression BlockStatement',
             'TSTypeParameterInstantiation'
           ]
-        }
-      ],
-      '@typescript-eslint/member-delimiter-style': [
-        'error',
-        {
-          multiline: {
-            delimiter: 'semi',
-            requireLast: true
-          },
-          singleline: {
-            delimiter: 'semi',
-            requireLast: false
-          }
         }
       ],
       '@typescript-eslint/member-ordering': 'off',

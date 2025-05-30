@@ -1,4 +1,4 @@
-import { createRule } from '../utils/create-rule';
+import { createRule } from '../utils/create-rule.js';
 import { AST_TOKEN_TYPES, TSESTree } from '@typescript-eslint/utils';
 
 type Options = string[];

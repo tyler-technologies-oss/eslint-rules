@@ -7,12 +7,15 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// TODO: Remove
+console.log("### @tylertech-eslint/eslint-plugin-angular ### Version: 1.0.2 ###");
+
 export default [
   {
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
-        ecmaVersion: 2020,
+        ecmaVersion: "latest",
         sourceType: 'module',
         project: './tsconfig.json',
         tsconfigRootDir: __dirname

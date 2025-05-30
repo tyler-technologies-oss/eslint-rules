@@ -1,4 +1,3 @@
-// @ts-expect-error - Import JS file in TypeScript
 import recommended from './configs/recommended.js';
 
 const plugin = {
