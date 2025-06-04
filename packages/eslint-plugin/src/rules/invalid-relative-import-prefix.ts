@@ -1,4 +1,4 @@
-import { createRule } from '../utils/create-rule';
+import { createRule } from '../utils/create-rule.js';
 import { TSESTree } from '@typescript-eslint/utils';
 
 type Options = string[];
@@ -10,7 +10,6 @@ export default createRule<Options, MessageIds>({
         type: 'suggestion',
         docs: {
             description: 'Avoids inconsistent import paths.',
-            recommended: 'recommended'
         },
         schema: [],
         messages: { invalidRelativeImportPrefix: 'Relative import statements cannot start with "./../' },

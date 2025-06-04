@@ -1,6 +1,0 @@
-{
-    "extends": [
-        "./configs/base.json",
-        "plugin:@angular-eslint/template/recommended"
-    ]
-}

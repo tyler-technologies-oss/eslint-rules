@@ -1,4 +1,4 @@
-import { createRule } from '../utils/create-rule';
+import { createRule } from '../utils/create-rule.js';
 import { AST_TOKEN_TYPES, TSESTree } from '@typescript-eslint/utils';
 
 type Options = string[];
@@ -11,7 +11,6 @@ export default createRule<Options, MessageIds>({
         type: 'suggestion',
         docs: {
             description: 'Requires properties or methods that start with an underscore to be marked with a private modifier.',
-            recommended: 'recommended'
         },
         schema: [],
         messages: { requirePrivateUnderscore: 'Private {{type}} must start with an underscore: {{nodeInfo}}' },

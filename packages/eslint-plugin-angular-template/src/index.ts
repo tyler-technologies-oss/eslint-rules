@@ -1,7 +1,7 @@
-import recommended from './configs/recommended.json';
+import recommended from './configs/recommended.js';
 
-export default {
-    configs: {
-        recommended
-    }
-}
+const plugin = {
+	configs: { recommended },
+};
+
+export default plugin;

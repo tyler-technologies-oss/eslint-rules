@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "module": "es2015",
+    "target": "esnext",
+    "module": "esnext",
     "moduleResolution": "node",
     "lib": [
-      "es2017"
+      "ESNext"
     ],
     "noImplicitAny": true,
     "noImplicitReturns": true,
@@ -20,6 +20,7 @@
     "allowUnreachableCode": false,
     "declarationMap": false,
     "esModuleInterop": true,
+    "allowJs": true,
     "baseUrl": "."
   }
 }
