@@ -1,7 +1,7 @@
-import recommended from './configs/recommended.json';
+import recommended from './configs/recommended';
 
 export default {
-    configs: {
-        recommended
-    }
-}
+  configs: {
+    recommended
+  }
+};

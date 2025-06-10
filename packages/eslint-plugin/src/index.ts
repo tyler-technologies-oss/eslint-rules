@@ -1,16 +1,15 @@
-import recommended from './configs/recommended.json';
-import invalidRelativeImportPrefix, { RULE_NAME as invalidRelativeImportPrefixRuleName } from './rules/invalid-relative-Import-prefix';
-import requirePrivateUnderscore, { RULE_NAME as requirePrivateUnderscoreRuleName } from './rules/require-private-underscore';
-import requirePrivateModifier, { RULE_NAME as requirePrivateModifierRuleName } from './rules/require-private-modifier';
+import customRules from './rules';
+import recommended from './configs/recommended';
 
+const plugin = {
+  meta: {
+    name: '@tylertech-eslint/eslint-plugin',
+    version: '2.0.0'
+  },
+  rules: customRules.rules,
+  configs: {
+    recommended
+  }
+};
 
-export default {
-    configs: {
-        recommended
-    },
-    rules: {
-        [requirePrivateModifierRuleName]: requirePrivateModifier,
-        [requirePrivateUnderscoreRuleName]: requirePrivateUnderscore,
-        [invalidRelativeImportPrefixRuleName]: invalidRelativeImportPrefix
-    }
-}
+export default plugin;

@@ -1,0 +1,15 @@
+.github/
+.changeset/
+.vscode/
+.husky/
+.turbo/
+coverage/
+.coverage/
+dist/
+node_modules/
+pnpm-lock.json
+pnpm-workspace.yaml
+CONTRIBUTING.md
+CHANGELOG.md
+README.md
+LICENSE

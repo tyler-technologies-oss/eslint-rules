@@ -1,40 +1,28 @@
-# eslint-rules
-Repository for Tyler recommended eslint rules
-
-
+# Tyler Tech ESLint Rules
+Shared ESLint rules and plugins for Tyler Technologies projects.
 
 ## Packages included in this project
+Please follow the links below for the packages you're interested in:
 
-Please follow the links below for the packages you care about.
+- [`@tylertech-eslint/eslint-plugin`](./packages/eslint-plugin/) - An ESLint plugin that contains rules which are recommended by Tyler Technologies.
 
-- [`@tylertech-eslint/eslint-plugin`](./packages/eslint-plugin/) - An ESLint-specific plugin that contains rules which are recommended by the CorpDev team. It can be combined with any other ESLint plugins in the normal way.
+- [`@tylertech-eslint/eslint-plugin-angular`](./packages/eslint-plugin-angular/) - An Angular ESLint plugin that contains rules for Angular which are recommended by Tyler Technologies.
 
-- [`@tylertech-eslint/eslint-plugin-angular`](./packages/eslint-plugin-angular/) - An angular eslint specific plugin that contains rules for angular which are recommended by the CorpDev team.
+- [`@tylertech-eslint/eslint-plugin-angular-template`](./packages/eslint-plugin-angular-template/) - An Angular template ESLint plugin that contains rules for Angular templates which are recommended by Tyler Technologies.
 
-- [`@tylertech-eslint/eslint-plugin-angular-template`](./packages/eslint-plugin-angular-template/) - An angular eslint template specific plugin that contains rules for angular templates which are recommended by the CorpDev team.
-
-Both angular specific packages extend @angular-eslint, and more information can be found in their [repo](https://github.com/angular-eslint/angular-eslint)
-
-<br>
-<br>
+Both angular specific packages extend `@angular-eslint`, and more information can be found in their [repo](https://github.com/angular-eslint/angular-eslint)
 
 # Example Uses
+
 ## @tylertech-eslint/eslint-plugin
 
-> npm i @tylertech-eslint/eslint-plugin
+> npm install -D @tylertech-eslint/eslint-plugin
 
-**.eslintrc.json**
-``` jsonc
-{
-    "overrides": {
-         "files": [
-        "*.ts"
-      ],
-    "extends": [
-        "plugin:@tylertech-eslint/recommended"
-      ]
-    }
-}
+**eslint.config.mjs**
+``` javascript
+import tylerConfig from '@tylertech-eslint/eslint-plugin';
+
+export default tylerConfig();
 ```
 
 ## @tylertech-eslint/eslint-plugin-angular
