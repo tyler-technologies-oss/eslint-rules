@@ -1,5 +1,5 @@
 import { RuleTester } from 'eslint';
-import rule from './invalid-relative-import-prefix';
+import rule from '../invalid-relative-import-prefix';
 
 const eslintTester = new RuleTester({
   languageOptions: { parserOptions: { ecmaVersion: 2020, sourceType: 'module' } }

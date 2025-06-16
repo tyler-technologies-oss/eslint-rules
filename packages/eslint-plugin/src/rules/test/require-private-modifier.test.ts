@@ -1,5 +1,5 @@
 import { RuleTester } from '@typescript-eslint/rule-tester';
-import rule from './require-private-modifier';
+import rule from '../require-private-modifier';
 import { parser } from 'typescript-eslint';
 
 const eslintTester = new RuleTester({ languageOptions: { parser } });

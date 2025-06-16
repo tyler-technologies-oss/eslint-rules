@@ -35,11 +35,11 @@ jobs:
       - name: 📦 Install Dependencies
         run: pnpm i
 
-      - name: Code Format
+      - name: 🔍 Check Format
         run: pnpm run format:check
  
-      - name: Build
+      - name: 🏗️ Build
         run: pnpm run build
  
-      - name: Test
+      - name: 🔬 Run Tests
         run: pnpm run test

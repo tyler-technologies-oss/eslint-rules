@@ -1,24 +1,5 @@
-import { globalIgnores } from 'eslint/config';
-import baseConfig from './base';
-import typescriptConfig from './typescript';
-import testConfig from './test';
+import { FlatConfig } from '@typescript-eslint/utils/ts-eslint';
+import globalIgnores from './ignores';
+import tsRecommended from './typescript';
 
-export default [
-  globalIgnores(
-    [
-      '**/node_modules/',
-      '**/dist/',
-      '**/build/',
-      '**/temp/',
-      '**/.cache/',
-      '**/coverage/',
-      '**/.coverage/',
-      '**/*.min.js',
-      '**/*.d.ts'
-    ],
-    'Global ignores'
-  ),
-  ...baseConfig,
-  ...typescriptConfig,
-  ...testConfig
-];
+export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [globalIgnores, ...tsRecommended(plugin)];

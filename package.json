@@ -1,6 +1,6 @@
 {
   "name": "eslint-rules",
-  "description": "Shared ESLint rules for Tyler Technologies.",
+  "description": "Shared ESLint rules and configurations that adhere to the standards and best practices of Tyler Technologies.",
   "private": true,
   "license": "Apache-2.0",
   "author": "Tyler Technologies, Inc.",
@@ -11,8 +11,8 @@
   },
   "scripts": {
     "prepare": "husky",
-    "format": "turbo run format",
-    "format:check": "turbo run format:check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "build": "turbo run build",
     "test": "turbo run test",
     "release": "pnpm build && changeset publish"

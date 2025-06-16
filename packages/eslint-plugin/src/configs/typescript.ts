@@ -1,14 +1,15 @@
+import type { FlatConfig } from '@typescript-eslint/utils/ts-eslint';
 import tseslint from 'typescript-eslint';
-import customRules from '../rules';
-import baseConfig from './base';
+import createBaseConfig from './base';
 
-export default [
-  tseslint.configs.eslintRecommended, // Disables conflicting ESLint rules from typescript-eslint
+export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
+  ...createBaseConfig(),
+  tseslint.configs.eslintRecommended,
   ...tseslint.configs.recommended,
   ...tseslint.configs.stylistic,
-  ...baseConfig,
   {
-    files: ['**/*.{ts,mts,cts,tsx}'],
+    name: '@tylertech-eslint/typescript-config',
+    files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
@@ -18,9 +19,19 @@ export default [
     },
     plugins: {
       '@typescript-eslint': tseslint.plugin,
-      '@tylertech-eslint': customRules
+      '@tylertech-eslint': plugin
     },
     rules: {
+      // Apply our custom TypeScript rules
+      '@tylertech-eslint/require-private-underscore': 'error',
+      '@tylertech-eslint/require-private-modifier': 'error',
+      '@tylertech-eslint/invalid-relative-import-prefix': 'error',
+
+      // Set our recommended TypeScript rules
+      '@typescript-eslint/array-type': 'off',
+      '@typescript-eslint/consistent-indexed-object-style': 'off',
+      '@typescript-eslint/consistent-generic-constructors': 'off',
+      '@typescript-eslint/no-empty-object-type': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/prefer-for-of': 'error',
       '@typescript-eslint/explicit-function-return-type': ['error', { allowExpressions: true }],
@@ -69,18 +80,21 @@ export default [
           }
         }
       ],
-      '@typescript-eslint/dot-notation': 'error',
+      '@typescript-eslint/dot-notation': 'off',
       '@typescript-eslint/explicit-member-accessibility': [
-        'off',
+        'error',
         {
-          accessibility: 'explicit'
+          accessibility: 'explicit',
+          overrides: {
+            constructors: 'off'
+          }
         }
       ],
       '@typescript-eslint/member-ordering': 'off',
       '@typescript-eslint/naming-convention': 'off',
       '@typescript-eslint/no-empty-function': 'off',
       '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: true }],
-      '@typescript-eslint/no-non-null-assertion': 'error',
+      '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/no-parameter-properties': 'off',
       '@typescript-eslint/no-shadow': [
         'error',
@@ -101,7 +115,6 @@ export default [
       '@typescript-eslint/unified-signatures': 'error',
       '@typescript-eslint/comma-dangle': 'off',
       '@typescript-eslint/arrow-body-style': 'off'
-    },
-    name: '@tylertech-eslint/typescript-config'
+    }
   }
 ];

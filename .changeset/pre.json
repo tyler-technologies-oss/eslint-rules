@@ -1,0 +1,11 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "@tylertech-eslint/eslint-plugin": "2.1.0",
+    "@tylertech-eslint/eslint-plugin-angular": "2.1.0"
+  },
+  "changesets": [
+    "rare-cloths-own"
+  ]
+}

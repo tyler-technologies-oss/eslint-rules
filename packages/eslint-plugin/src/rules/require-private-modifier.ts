@@ -3,6 +3,8 @@ import { TSESTree } from '@typescript-eslint/utils';
 
 type Options = string[];
 type MessageIds = 'requirePrivateModifier';
+
+const ALLOWED_MEMBERS = ['constructor'];
 export const RULE_NAME = 'require-private-modifier';
 
 export default createRule<Options, MessageIds>({
@@ -24,7 +26,7 @@ export default createRule<Options, MessageIds>({
       const isPrivate = node.accessibility === 'private' || node.accessibility === 'protected';
       const propertyName = (node.key as TSESTree.Identifier).name;
 
-      if (isPrivate && !propertyName.startsWith('_')) {
+      if (isPrivate && !propertyName.startsWith('_') && !ALLOWED_MEMBERS.includes(propertyName)) {
         context.report({
           data: { type: node.type, nodeInfo: `_${propertyName}` },
           messageId: 'requirePrivateModifier',

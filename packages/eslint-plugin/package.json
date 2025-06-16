@@ -1,7 +1,7 @@
 {
   "name": "@tylertech-eslint/eslint-plugin",
-  "description": "Shared ESLint rules for Tyler Technologies.",
-  "version": "1.0.0",
+  "description": "Shared ESLint rules and configurations that adhere to the standards and best practices of Tyler Technologies.",
+  "version": "3.0.0-beta.2",
   "author": "Tyler Technologies, Inc.",
   "license": "Apache-2.0",
   "type": "module",
@@ -15,12 +15,14 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
-    "./configs/*": "./dist/configs/*.js",
     "./package.json": "./package.json"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsdown",
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -32,17 +34,17 @@
     "@typescript-eslint/rule-tester": "catalog:",
     "@typescript-eslint/utils": "catalog:",
     "typescript-eslint": "catalog:",
-    "globals": "16.2.0"
+    "globals": "^16.2.0"
   },
   "devDependencies": {
     "@types/eslint": "^9.6.1",
     "@types/estree": "1.0.8",
-    "@types/jest": "^29.5.14",
+    "@types/jest": "^30.0.0",
     "@types/node": "catalog:",
     "eslint": "^9.28.0",
-    "jest": "^29.7.0",
+    "jest": "^30.0.0",
     "tsdown": "catalog:",
-    "ts-jest": "^29.3.4",
+    "ts-jest": "^29.4.0",
     "typescript": "catalog:"
   },
   "peerDependencies": {

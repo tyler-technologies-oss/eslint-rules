@@ -1,32 +1,28 @@
-import js from '@eslint/js';
 import globals from 'globals';
-import customRules from '../rules';
+import type { FlatConfig } from '@typescript-eslint/utils/ts-eslint';
+import js from '@eslint/js';
 
-export default [
+export default (): FlatConfig.ConfigArray => [
   {
-    files: ['**/*.{js,mjs,cjs,jsx}'],
+    name: '@tylertech-eslint/base-config',
+    files: ['**/*.js', '**/*.mjs', '**/*.cjs', '**/*.jsx'],
     languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
       globals: {
         ...globals.browser,
-        ...globals.node,
-        ...globals.es2021
+        ...globals.node
       }
     },
-    plugins: {
-      '@tylertech-eslint': customRules
-    },
     rules: {
-      // Use ESLint's recommended rules for JavaScript
+      // Use the base ESLint rules
       ...js.configs.recommended.rules,
 
-      // Apply our custom rules
-      '@tylertech-eslint/require-private-underscore': 'error',
-      '@tylertech-eslint/require-private-modifier': 'error',
-      '@tylertech-eslint/invalid-relative-import-prefix': 'error',
-
-      // Set our general JavaScript rules
+      // Set our preferred JavaScript rules
+      'no-prototype-builtins': 'off',
+      'no-async-promise-executor': 'off',
+      'no-case-declarations': 'off',
+      'no-extra-boolean-cast': 'off',
+      'no-useless-escape': 'off',
+      'prefer-rest-params': 'off',
       'no-console': [
         'error',
         {
@@ -95,7 +91,6 @@ export default [
         }
       ],
       'valid-typeof': 'off'
-    },
-    name: '@tylertech-eslint/base-config'
+    }
   }
 ];

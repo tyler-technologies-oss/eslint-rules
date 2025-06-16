@@ -44,7 +44,7 @@ jobs:
         with:
           title: 'chore: release'
           commit: 'chore: release'
-          publish: npm run release
+          publish: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.FORGE_NPM_TOKEN }}

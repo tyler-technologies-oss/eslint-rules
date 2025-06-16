@@ -1,5 +1,5 @@
 import { RuleTester } from '@typescript-eslint/rule-tester';
-import rule from './require-private-underscore';
+import rule from '../require-private-underscore';
 import { parser } from 'typescript-eslint';
 
 const eslintTester = new RuleTester({ languageOptions: { parser } });
@@ -17,14 +17,14 @@ class Test {
 const invalidCodeMethod = `
 class Test {
     _test() { 
-        return true
+        return true;
     }
 }
 `;
 const validCodeMethod = `
 class Test {
     private _test() { 
-        return true
+        return true;
     }
 }
 `;
@@ -32,14 +32,14 @@ class Test {
 const invalidCodeGetMethod = `
 class Test {
     get _test() { 
-        return true
+        return true;
     }
 }
 `;
 const validCodeGetMethod = `
 class Test {
     private get _test() { 
-        return true
+        return true;
     }
 }
 `;

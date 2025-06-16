@@ -1,5 +1,6 @@
 import tseslint from 'typescript-eslint';
 import angularEslint from 'angular-eslint';
+import { type FlatConfig } from '@typescript-eslint/utils/ts-eslint';
 
 export default [
   ...angularEslint.configs.tsRecommended,
@@ -7,13 +8,10 @@ export default [
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
         tsconfigRootDir: process.cwd()
       }
     },
     plugins: {
-      '@typescript-eslint': tseslint.plugin,
       '@angular-eslint': angularEslint.tsPlugin
     },
     rules: {
@@ -36,7 +34,6 @@ export default [
       '@angular-eslint/contextual-lifecycle': 'error',
       '@angular-eslint/directive-class-suffix': 'error',
       '@angular-eslint/no-conflicting-lifecycle': 'error',
-      '@angular-eslint/no-host-metadata-property': ['error', { allowStatic: true }],
       '@angular-eslint/no-input-rename': 'error',
       '@angular-eslint/no-inputs-metadata-property': 'error',
       '@angular-eslint/no-output-native': 'error',
@@ -47,4 +44,4 @@ export default [
       '@angular-eslint/use-pipe-transform-interface': 'error'
     }
   }
-];
+] satisfies FlatConfig.ConfigArray;

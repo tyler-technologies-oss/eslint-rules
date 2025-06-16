@@ -1,9 +1,15 @@
+import { FlatConfig } from '@typescript-eslint/utils/ts-eslint';
+
 /**
  * Configuration for test files with relaxed rules
  */
-export default [
+export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
   {
-    files: ['**/*.{test,spec}.{ts,mts,js,mjs}'],
+    name: '@tylertech-eslint/test-config',
+    files: ['**/*.test.ts', '**/*.spec.ts', '**/*.test.js', '**/*.spec.js'],
+    plugins: {
+      '@tylertech-eslint': plugin
+    },
     rules: {
       // Relaxed TypeScript rules for test files
       '@typescript-eslint/no-explicit-any': 'off',
@@ -12,13 +18,16 @@ export default [
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/dot-notation': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/consistent-type-definitions': 'off',
 
       // Relaxed JavaScript rules for test files
       'no-console': 'off',
       'no-undef': 'off',
       'spaced-comment': 'off',
-      'prefer-const': 'off'
-    },
-    name: '@tylertech-eslint/test-config'
+      'prefer-const': 'off',
+      'space-before-function-paren': 'off',
+      'no-trailing-spaces': 'off',
+      'eol-last': 'off'
+    }
   }
 ];
