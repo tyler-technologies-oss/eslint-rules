@@ -11,3 +11,4 @@ pnpm-lock.yaml
 **/CHANGELOG.md
 **/README.md
 **/LICENSE
+.pnpm-store/
