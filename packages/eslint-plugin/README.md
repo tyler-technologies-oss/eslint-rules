@@ -25,7 +25,7 @@ To use it, set up your ESLint config file as follows:
 ```javascript
 // eslint.config.js
 import { defineConfig } from 'eslint/config';
-import tylerPlugin from '@tylertech/eslint-plugin';
+import tylerPlugin from '@tylertech-eslint/eslint-plugin';
 
 // Optional if you want to use Prettier integration (see below)
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
