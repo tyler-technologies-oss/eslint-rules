@@ -30,7 +30,7 @@ import tylerPlugin from '@tylertech/eslint-plugin';
 // Optional if you want to use Prettier integration (see below)
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
-export default defineConfig({
+export default defineConfig([
   // Specify which files the recommended config should apply to
   {
     files: ['**/*.ts'],
@@ -64,7 +64,7 @@ export default defineConfig({
   // If you're using Prettier, you can also extend the Prettier recommended config to avoid conflicts with formatting
   // **Must be the last item in the config array**
   eslintPluginPrettierRecommended
-});
+]);
 ```
 
 ## Configurations
