@@ -18,16 +18,10 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/dot-notation': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
-      '@typescript-eslint/consistent-type-definitions': 'off',
 
       // Relaxed JavaScript rules for test files
       'no-console': 'off',
       'no-undef': 'off',
-      'spaced-comment': 'off',
-      'prefer-const': 'off',
-      'space-before-function-paren': 'off',
-      'no-trailing-spaces': 'off',
-      'eol-last': 'off',
     },
   },
 ];
