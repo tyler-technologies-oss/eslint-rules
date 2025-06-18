@@ -49,15 +49,6 @@ export default defineConfig([
     }
   },
 
-  // Optional: this plugin also provides recommended rules intended for test files
-  {
-    files: ['**/*.test.ts'],
-    extends: [tylerPlugin.configs.testRecommended],
-    rules: {
-      // If applicable, add any specific rules you want to override or add here
-    }
-  }
-
   // Optionally ignore specific files or directories
   { ignores: ['path/to/some/direction/**/*', 'path/to/a/file.ts'] }
 
@@ -76,9 +67,6 @@ This plugin provides the following configurations:
 | `base` | The base configuration that includes both the default ESLint recommended rules, and our recommended JavaScript rules. This is the foundation for all other configurations. |
 | `strict` | A strict set of rules for JavaScript and TypeScript files, enforcing best practices and coding standards. |
 | `recommended` | A recommended set of rules for JavaScript and TypeScript files. |
-| `testRecommended` | A recommended set of rules specifically for test files, with more relaxed rules for testing purposes. |
-
-> Note: The `recommended` configuration should cover your test files as well, but you can use the `testRecommended` configuration to apply more relaxed rules specifically for tests.
 
 ## Custom Rules
 
