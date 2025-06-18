@@ -6,7 +6,7 @@ import { FlatConfig } from '@typescript-eslint/utils/ts-eslint';
 export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
   {
     name: '@tylertech-eslint/test-config',
-    files: ['**/*.test.ts', '**/*.spec.ts', '**/*.test.js', '**/*.spec.js'],
+    files: ['**/*.test.{js,jsx,ts,tsx}', '**/*.spec.{js,jsx,ts,tsx}'],
     plugins: {
       '@tylertech-eslint': plugin,
     },
