@@ -7,12 +7,12 @@ export default [
     languageOptions: {
       parser: angularEslint.templateParser,
       parserOptions: {
-        tsconfigRootDir: process.cwd()
-      }
+        tsconfigRootDir: process.cwd(),
+      },
     },
     plugins: {
-      '@angular-eslint/template': angularEslint.templatePlugin
+      '@angular-eslint/template': angularEslint.templatePlugin,
     },
-    rules: {}
-  }
+    rules: {},
+  },
 ];

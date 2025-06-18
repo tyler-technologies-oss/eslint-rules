@@ -8,19 +8,19 @@ export default [
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        tsconfigRootDir: process.cwd()
-      }
+        tsconfigRootDir: process.cwd(),
+      },
     },
     plugins: {
-      '@angular-eslint': angularEslint.tsPlugin
+      '@angular-eslint': angularEslint.tsPlugin,
     },
     rules: {
       '@angular-eslint/directive-selector': [
         'error',
         {
           type: 'attribute',
-          style: 'camelCase'
-        }
+          style: 'camelCase',
+        },
       ],
       '@angular-eslint/component-class-suffix': 'error',
       '@angular-eslint/component-selector': [
@@ -28,8 +28,8 @@ export default [
         {
           type: 'element',
           prefix: [],
-          style: 'kebab-case'
-        }
+          style: 'kebab-case',
+        },
       ],
       '@angular-eslint/contextual-lifecycle': 'error',
       '@angular-eslint/directive-class-suffix': 'error',
@@ -41,7 +41,7 @@ export default [
       '@angular-eslint/no-output-rename': 'error',
       '@angular-eslint/no-outputs-metadata-property': 'error',
       '@angular-eslint/use-lifecycle-interface': 'error',
-      '@angular-eslint/use-pipe-transform-interface': 'error'
-    }
-  }
+      '@angular-eslint/use-pipe-transform-interface': 'error',
+    },
+  },
 ] satisfies FlatConfig.ConfigArray;

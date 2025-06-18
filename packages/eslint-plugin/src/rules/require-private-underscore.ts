@@ -12,11 +12,11 @@ export default createRule<Options, MessageIds>({
   meta: {
     type: 'suggestion',
     docs: {
-      description: 'Requires private properties or methods to start with an underscore.'
+      description: 'Requires private properties or methods to start with an underscore.',
     },
     schema: [],
     messages: { requirePrivateUnderscore: "'{{nodeInfo}}' must start with an underscore" },
-    fixable: 'code'
+    fixable: 'code',
   },
   defaultOptions: [],
   create: function (context) {
@@ -42,7 +42,7 @@ export default createRule<Options, MessageIds>({
               return fixer.replaceText(publicToken, 'private');
             }
             return fixer.insertTextBefore(node, 'private ');
-          }
+          },
         });
       }
     }
@@ -53,7 +53,7 @@ export default createRule<Options, MessageIds>({
       },
       MethodDefinition(node) {
         checkNode(node);
-      }
+      },
     };
-  }
+  },
 });

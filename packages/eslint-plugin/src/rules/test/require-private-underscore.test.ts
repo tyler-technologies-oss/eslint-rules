@@ -50,9 +50,9 @@ eslintTester.run('require-private-underscore', rule as any, {
     {
       code: invalidCode,
       errors: [{ messageId: 'requirePrivateUnderscore' }],
-      output: validCode
-    }
-  ]
+      output: validCode,
+    },
+  ],
 });
 
 eslintTester.run('require-private-underscore-member', rule as any, {
@@ -61,9 +61,9 @@ eslintTester.run('require-private-underscore-member', rule as any, {
     {
       code: invalidCodeMethod,
       errors: [{ messageId: 'requirePrivateUnderscore' }],
-      output: validCodeMethod
-    }
-  ]
+      output: validCodeMethod,
+    },
+  ],
 });
 
 eslintTester.run('require-private-underscore-member', rule as any, {
@@ -72,7 +72,7 @@ eslintTester.run('require-private-underscore-member', rule as any, {
     {
       code: invalidCodeGetMethod,
       errors: [{ messageId: 'requirePrivateUnderscore' }],
-      output: validCodeGetMethod
-    }
-  ]
+      output: validCodeGetMethod,
+    },
+  ],
 });

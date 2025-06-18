@@ -10,11 +10,11 @@ export default createRule<Options, MessageIds>({
   meta: {
     type: 'suggestion',
     docs: {
-      description: 'Avoids inconsistent import paths.'
+      description: 'Avoids inconsistent import paths.',
     },
     schema: [],
     messages: { invalidRelativeImportPrefix: 'Relative import statements cannot start with "./../' },
-    fixable: 'code'
+    fixable: 'code',
   },
   defaultOptions: [],
   create: function (context) {
@@ -27,7 +27,7 @@ export default createRule<Options, MessageIds>({
           node: node.source,
           fix: function (fixer) {
             return fixer.replaceTextRange([node.source.range[0], node.source.range[0] + 3], `${node.source.raw[0]}../`);
-          }
+          },
         });
       }
     }
@@ -35,7 +35,7 @@ export default createRule<Options, MessageIds>({
     return {
       ImportDeclaration(node) {
         reportIfInvalidRelativeImport(node);
-      }
+      },
     };
-  }
+  },
 });

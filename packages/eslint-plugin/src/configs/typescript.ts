@@ -14,12 +14,12 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
       parser: tseslint.parser,
       parserOptions: {
         project: true,
-        tsconfigRootDir: process.cwd()
-      }
+        tsconfigRootDir: process.cwd(),
+      },
     },
     plugins: {
       '@typescript-eslint': tseslint.plugin,
-      '@tylertech-eslint': plugin
+      '@tylertech-eslint': plugin,
     },
     rules: {
       // Apply our custom TypeScript rules
@@ -39,8 +39,8 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
       '@typescript-eslint/no-inferrable-types': [
         'error',
         {
-          ignoreParameters: true
-        }
+          ignoreParameters: true,
+        },
       ],
       'no-unused-vars': 'off', // Disable base rule as it conflicts with TypeScript's rule
       '@typescript-eslint/no-unused-vars': [
@@ -52,33 +52,33 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
           caughtErrorsIgnorePattern: '^_',
           destructuredArrayIgnorePattern: '^_',
           varsIgnorePattern: '^_',
-          ignoreRestSiblings: true
-        }
+          ignoreRestSiblings: true,
+        },
       ],
       '@typescript-eslint/no-restricted-types': [
         'error',
         {
           types: {
             Object: {
-              message: 'Avoid using the `Object` type. Did you mean `object`?'
+              message: 'Avoid using the `Object` type. Did you mean `object`?',
             },
             Function: {
-              message: 'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.'
+              message: 'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.',
             },
             Boolean: {
-              message: 'Avoid using the `Boolean` type. Did you mean `boolean`?'
+              message: 'Avoid using the `Boolean` type. Did you mean `boolean`?',
             },
             Number: {
-              message: 'Avoid using the `Number` type. Did you mean `number`?'
+              message: 'Avoid using the `Number` type. Did you mean `number`?',
             },
             String: {
-              message: 'Avoid using the `String` type. Did you mean `string`?'
+              message: 'Avoid using the `String` type. Did you mean `string`?',
             },
             Symbol: {
-              message: 'Avoid using the `Symbol` type. Did you mean `symbol`?'
-            }
-          }
-        }
+              message: 'Avoid using the `Symbol` type. Did you mean `symbol`?',
+            },
+          },
+        },
       ],
       '@typescript-eslint/dot-notation': 'off',
       '@typescript-eslint/explicit-member-accessibility': [
@@ -86,9 +86,9 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
         {
           accessibility: 'explicit',
           overrides: {
-            constructors: 'off'
-          }
-        }
+            constructors: 'off',
+          },
+        },
       ],
       '@typescript-eslint/member-ordering': 'off',
       '@typescript-eslint/naming-convention': 'off',
@@ -99,8 +99,8 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
       '@typescript-eslint/no-shadow': [
         'error',
         {
-          hoist: 'all'
-        }
+          hoist: 'all',
+        },
       ],
       '@typescript-eslint/no-use-before-define': 'off',
       '@typescript-eslint/no-var-requires': 'off',
@@ -109,12 +109,12 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
         {
           path: 'always',
           types: 'prefer-import',
-          lib: 'always'
-        }
+          lib: 'always',
+        },
       ],
       '@typescript-eslint/unified-signatures': 'error',
       '@typescript-eslint/comma-dangle': 'off',
-      '@typescript-eslint/arrow-body-style': 'off'
-    }
-  }
+      '@typescript-eslint/arrow-body-style': 'off',
+    },
+  },
 ];

@@ -4,8 +4,8 @@ import templateRecommended from './configs/template-recommended';
 export default {
   configs: {
     recommended,
-    templateRecommended
-  }
+    templateRecommended,
+  },
 };
 
 export { recommended, templateRecommended };

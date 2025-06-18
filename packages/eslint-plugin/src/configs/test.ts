@@ -8,7 +8,7 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
     name: '@tylertech-eslint/test-config',
     files: ['**/*.test.ts', '**/*.spec.ts', '**/*.test.js', '**/*.spec.js'],
     plugins: {
-      '@tylertech-eslint': plugin
+      '@tylertech-eslint': plugin,
     },
     rules: {
       // Relaxed TypeScript rules for test files
@@ -27,7 +27,7 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
       'prefer-const': 'off',
       'space-before-function-paren': 'off',
       'no-trailing-spaces': 'off',
-      'eol-last': 'off'
-    }
-  }
+      'eol-last': 'off',
+    },
+  },
 ];

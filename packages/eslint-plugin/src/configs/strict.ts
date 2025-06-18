@@ -14,7 +14,7 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
     files: ['**/*.js', '**/*.mjs', '**/*.cjs', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
     plugins: {
       '@typescript-eslint': tseslint.plugin,
-      '@tylertech-eslint': plugin
+      '@tylertech-eslint': plugin,
     },
     rules: {
       // TypeScript rules
@@ -36,7 +36,7 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
       'no-case-declarations': 'error',
       'no-extra-boolean-cast': 'error',
       'no-useless-escape': 'error',
-      'prefer-rest-params': 'error'
-    }
-  }
+      'prefer-rest-params': 'error',
+    },
+  },
 ];

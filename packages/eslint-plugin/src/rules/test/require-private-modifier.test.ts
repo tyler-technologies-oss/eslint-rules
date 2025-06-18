@@ -38,9 +38,9 @@ eslintTester.run('require-private-modifier', rule as any, {
     {
       code: invalidCode,
       errors: [{ messageId: 'requirePrivateModifier' }],
-      output: validCode
-    }
-  ]
+      output: validCode,
+    },
+  ],
 });
 
 eslintTester.run('require-private-modifier', rule, {
@@ -49,7 +49,7 @@ eslintTester.run('require-private-modifier', rule, {
     {
       code: invalidCodeMethod,
       errors: [{ messageId: 'requirePrivateModifier' }],
-      output: validCodeMethod
-    }
-  ]
+      output: validCodeMethod,
+    },
+  ],
 });

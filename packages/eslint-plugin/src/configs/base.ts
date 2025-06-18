@@ -9,8 +9,8 @@ export default (): FlatConfig.ConfigArray => [
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.node
-      }
+        ...globals.node,
+      },
     },
     rules: {
       // Use the base ESLint rules
@@ -26,8 +26,8 @@ export default (): FlatConfig.ConfigArray => [
       'no-console': [
         'error',
         {
-          allow: ['warn', 'error']
-        }
+          allow: ['warn', 'error'],
+        },
       ],
       'no-debugger': 'error',
       'prefer-const': 'error',
@@ -51,7 +51,7 @@ export default (): FlatConfig.ConfigArray => [
         'Boolean',
         'boolean',
         'Undefined',
-        'undefined'
+        'undefined',
       ],
       'id-match': 'error',
       'import/order': 'off',
@@ -80,17 +80,17 @@ export default (): FlatConfig.ConfigArray => [
         {
           anonymous: 'never',
           asyncArrow: 'always',
-          named: 'never'
-        }
+          named: 'never',
+        },
       ],
       'spaced-comment': [
         'error',
         'always',
         {
-          markers: ['/']
-        }
+          markers: ['/'],
+        },
       ],
-      'valid-typeof': 'off'
-    }
-  }
+      'valid-typeof': 'off',
+    },
+  },
 ];

@@ -9,7 +9,7 @@ import { name, version } from '../package.json';
 
 const plugin = {
   meta: { name, version },
-  rules
+  rules,
 } satisfies TSESLint.FlatConfig.Plugin;
 
 const base = createBaseConfig();
@@ -21,12 +21,12 @@ const configs = {
   base,
   recommended,
   strict,
-  testRecommended
+  testRecommended,
 } satisfies Record<string, TSESLint.FlatConfig.Config | TSESLint.FlatConfig.ConfigArray>;
 
 export default {
   ...plugin,
-  configs
+  configs,
 } satisfies TSESLint.FlatConfig.Plugin;
 
 export { base, recommended, strict, tsRecommended, testRecommended };

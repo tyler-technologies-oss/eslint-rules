@@ -10,7 +10,7 @@ export default globalIgnores(
     '**/coverage/',
     '**/.coverage/',
     '**/*.min.js',
-    '**/*.d.ts'
+    '**/*.d.ts',
   ],
-  '@tylertech-eslint/global-ignores'
+  '@tylertech-eslint/global-ignores',
 );
