@@ -1,15 +1,15 @@
-import type { FlatConfig } from '@typescript-eslint/utils/ts-eslint';
+import { FlatConfig } from '@typescript-eslint/utils/ts-eslint';
 import tseslint from 'typescript-eslint';
-import createBaseConfig from './base';
+import createRecommendedConfig from './recommended';
 
+/**
+ * Recommended ESLint configuration for TypeScript files.
+ */
 export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
-  ...createBaseConfig(),
-  tseslint.configs.eslintRecommended,
+  ...createRecommendedConfig(plugin),
   ...tseslint.configs.recommended,
-  ...tseslint.configs.stylistic,
   {
-    name: '@tylertech-eslint/typescript-config',
-    files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
+    name: '@tylertech-eslint/typescript-recommended-config',
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
@@ -27,22 +27,22 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
       '@tylertech-eslint/require-private-modifier': 'error',
       '@tylertech-eslint/invalid-relative-import-prefix': 'error',
 
-      // Set our recommended TypeScript rules
-      '@typescript-eslint/array-type': 'off',
-      '@typescript-eslint/consistent-indexed-object-style': 'off',
-      '@typescript-eslint/consistent-generic-constructors': 'off',
-      '@typescript-eslint/no-empty-object-type': 'off',
+      // Recommended TypeScript rules
+
+      // Warn (all turned to error in strict config)
       '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/prefer-for-of': 'error',
-      '@typescript-eslint/explicit-function-return-type': ['error', { allowExpressions: true }],
-      '@typescript-eslint/explicit-module-boundary-types': 'off',
-      '@typescript-eslint/no-inferrable-types': [
+      '@typescript-eslint/no-require-imports': 'warn',
+      '@typescript-eslint/no-non-null-assertion': 'warn',
+
+      // Error
+      '@typescript-eslint/no-empty-object-type': [
         'error',
-        {
-          ignoreParameters: true,
-        },
+        { allowInterfaces: 'always' },
       ],
-      'no-unused-vars': 'off', // Disable base rule as it conflicts with TypeScript's rule
+      '@typescript-eslint/explicit-function-return-type': [
+        'error',
+        { allowExpressions: true },
+      ],
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
@@ -63,10 +63,12 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
               message: 'Avoid using the `Object` type. Did you mean `object`?',
             },
             Function: {
-              message: 'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.',
+              message:
+                'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.',
             },
             Boolean: {
-              message: 'Avoid using the `Boolean` type. Did you mean `boolean`?',
+              message:
+                'Avoid using the `Boolean` type. Did you mean `boolean`?',
             },
             Number: {
               message: 'Avoid using the `Number` type. Did you mean `number`?',
@@ -80,7 +82,6 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
           },
         },
       ],
-      '@typescript-eslint/dot-notation': 'off',
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
         {
@@ -90,20 +91,12 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
           },
         },
       ],
-      '@typescript-eslint/member-ordering': 'off',
-      '@typescript-eslint/naming-convention': 'off',
-      '@typescript-eslint/no-empty-function': 'off',
-      '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: true }],
-      '@typescript-eslint/no-non-null-assertion': 'off',
-      '@typescript-eslint/no-parameter-properties': 'off',
       '@typescript-eslint/no-shadow': [
         'error',
         {
           hoist: 'all',
         },
       ],
-      '@typescript-eslint/no-use-before-define': 'off',
-      '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/triple-slash-reference': [
         'error',
         {
@@ -113,8 +106,6 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
         },
       ],
       '@typescript-eslint/unified-signatures': 'error',
-      '@typescript-eslint/comma-dangle': 'off',
-      '@typescript-eslint/arrow-body-style': 'off',
     },
   },
 ];

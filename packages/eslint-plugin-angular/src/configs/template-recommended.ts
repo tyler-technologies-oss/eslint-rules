@@ -1,5 +1,8 @@
 import angularEslint from 'angular-eslint';
 
+/**
+ * Recommended ESLint configuration for Angular templates.
+ */
 export default [
   ...angularEslint.configs.templateRecommended,
   ...angularEslint.configs.templateAccessibility,

@@ -1,5 +1,23 @@
 # @tylertech-eslint/eslint-plugin
 
+## 3.0.0-beta.5
+
+### Minor Changes
+
+- config and rule adjustments
+
+## 3.0.0-beta.4
+
+### Minor Changes
+
+- updated recommended rules
+
+## 3.0.0-beta.3
+
+### Minor Changes
+
+- restructured configs and rules
+
 ## 3.0.0-beta.2
 
 ### Patch Changes

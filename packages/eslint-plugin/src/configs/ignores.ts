@@ -1,5 +1,8 @@
 import { globalIgnores } from 'eslint/config';
 
+/**
+ * ESLint configuration for common global ignore patterns.
+ */
 export default globalIgnores(
   [
     '**/node_modules/',

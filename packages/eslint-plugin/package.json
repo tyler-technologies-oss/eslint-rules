@@ -1,7 +1,7 @@
 {
   "name": "@tylertech-eslint/eslint-plugin",
   "description": "Shared ESLint rules and configurations that adhere to the standards and best practices of Tyler Technologies.",
-  "version": "3.0.0-beta.2",
+  "version": "3.0.0-beta.5",
   "author": "Tyler Technologies, Inc.",
   "license": "Apache-2.0",
   "type": "module",

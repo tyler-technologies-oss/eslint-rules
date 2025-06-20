@@ -1,5 +1,11 @@
 # @tylertech-eslint/eslint-plugin-angular
 
+## 3.0.0-beta.1
+
+### Minor Changes
+
+- config and rule adjustments
+
 ## 3.0.0
 
 ### Major Changes

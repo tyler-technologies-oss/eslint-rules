@@ -2,6 +2,9 @@ import tseslint from 'typescript-eslint';
 import angularEslint from 'angular-eslint';
 import { type FlatConfig } from '@typescript-eslint/utils/ts-eslint';
 
+/**
+ * Recommended ESLint configuration for Angular projects.
+ */
 export default [
   ...angularEslint.configs.tsRecommended,
   {
@@ -15,6 +18,10 @@ export default [
       '@angular-eslint': angularEslint.tsPlugin,
     },
     rules: {
+      // JavaScript rules
+      'no-restricted-imports': ['error', 'rxjs/Rx'],
+
+      // Angular rules
       '@angular-eslint/directive-selector': [
         'error',
         {
