@@ -13,20 +13,31 @@ export default createRule<Options, MessageIds>({
       description: 'Avoids inconsistent import paths.',
     },
     schema: [],
-    messages: { invalidRelativeImportPrefix: 'Relative import statements cannot start with "./../' },
+    messages: {
+      invalidRelativeImportPrefix:
+        'Relative import statements cannot start with "./../',
+    },
     fixable: 'code',
   },
   defaultOptions: [],
   create: function (context) {
-    function reportIfInvalidRelativeImport(node: TSESTree.ImportDeclaration & TSESTree.Node) {
+    function reportIfInvalidRelativeImport(
+      node: TSESTree.ImportDeclaration & TSESTree.Node,
+    ) {
       const importSource = (node.source.value as string).trim();
       const invalidRelativeImportStart = importSource.substring(0, 5);
-      if (typeof invalidRelativeImportStart === 'string' && invalidRelativeImportStart === './../') {
+      if (
+        typeof invalidRelativeImportStart === 'string' &&
+        invalidRelativeImportStart === './../'
+      ) {
         context.report({
           messageId: 'invalidRelativeImportPrefix',
           node: node.source,
           fix: function (fixer) {
-            return fixer.replaceTextRange([node.source.range[0], node.source.range[0] + 3], `${node.source.raw[0]}../`);
+            return fixer.replaceTextRange(
+              [node.source.range[0], node.source.range[0] + 3],
+              `${node.source.raw[0]}../`,
+            );
           },
         });
       }

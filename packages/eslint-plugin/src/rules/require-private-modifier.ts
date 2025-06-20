@@ -12,21 +12,30 @@ export default createRule<Options, MessageIds>({
   meta: {
     type: 'suggestion',
     docs: {
-      description: 'Requires properties or methods that start with an underscore to be marked with a private modifier.',
+      description:
+        'Requires properties or methods that start with an underscore to be marked with a private modifier.',
     },
     schema: [],
     messages: {
-      requirePrivateModifier: "'{{nodeInfo}}' must be marked as private or protected if it starts with an underscore",
+      requirePrivateModifier:
+        "'{{nodeInfo}}' must be marked as private or protected if it starts with an underscore",
     },
     fixable: 'code',
   },
   defaultOptions: [],
   create: function (context) {
-    function checkNode(node: TSESTree.PropertyDefinition | TSESTree.MethodDefinition) {
-      const isPrivate = node.accessibility === 'private' || node.accessibility === 'protected';
+    function checkNode(
+      node: TSESTree.PropertyDefinition | TSESTree.MethodDefinition,
+    ) {
+      const isPrivate =
+        node.accessibility === 'private' || node.accessibility === 'protected';
       const propertyName = (node.key as TSESTree.Identifier).name;
 
-      if (isPrivate && !propertyName.startsWith('_') && !ALLOWED_MEMBERS.includes(propertyName)) {
+      if (
+        isPrivate &&
+        !propertyName.startsWith('_') &&
+        !ALLOWED_MEMBERS.includes(propertyName)
+      ) {
         context.report({
           data: { type: node.type, nodeInfo: `_${propertyName}` },
           messageId: 'requirePrivateModifier',
