@@ -20,6 +20,7 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
       'prefer-object-has-own': 'error',
       'arrow-body-style': ['warn', 'as-needed'],
       'no-undef': 'error',
+      camelcase: 'error',
     },
   },
 ];
