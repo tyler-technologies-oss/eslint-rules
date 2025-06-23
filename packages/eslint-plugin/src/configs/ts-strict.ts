@@ -20,7 +20,6 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
       '@typescript-eslint/no-unused-vars': 'error',
       '@typescript-eslint/no-unused-expressions': 'error',
       '@typescript-eslint/no-non-null-assertion': 'error',
-      'dot-notation': 'off',
       '@typescript-eslint/dot-notation': 'error',
       '@typescript-eslint/explicit-function-return-type': 'error',
       '@typescript-eslint/explicit-module-boundary-types': 'error',
