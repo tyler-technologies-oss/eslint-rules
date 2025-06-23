@@ -15,6 +15,7 @@ export default (_plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
       '@typescript-eslint/consistent-generic-constructors': 'off',
 
       // Warn
+      'no-empty-function': 'off',
       '@typescript-eslint/no-empty-function': [
         'warn',
         { allow: ['private-constructors', 'protected-constructors'] },

@@ -33,6 +33,8 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-require-imports': 'warn',
       '@typescript-eslint/no-non-null-assertion': 'warn',
+      'dot-notation': 'off',
+      '@typescript-eslint/dot-notation': 'warn',
 
       // Error
       '@typescript-eslint/no-empty-object-type': [
@@ -91,6 +93,7 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
           },
         },
       ],
+      'no-shadow': 'off',
       '@typescript-eslint/no-shadow': [
         'error',
         {
