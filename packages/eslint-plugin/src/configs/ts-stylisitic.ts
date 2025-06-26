@@ -13,13 +13,9 @@ export default (_plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
       '@typescript-eslint/array-type': 'off',
       '@typescript-eslint/consistent-indexed-object-style': 'off',
       '@typescript-eslint/consistent-generic-constructors': 'off',
+      '@typescript-eslint/no-empty-function': 'off',
 
       // Warn
-      'no-empty-function': 'off',
-      '@typescript-eslint/no-empty-function': [
-        'warn',
-        { allow: ['private-constructors', 'protected-constructors'] },
-      ],
       '@typescript-eslint/no-inferrable-types': [
         'warn',
         {
