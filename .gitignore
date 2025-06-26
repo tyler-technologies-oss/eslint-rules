@@ -3,4 +3,5 @@ dist/
 *.tgz
 coverage/
 .turbo/
+.pnpm-store/
 **/.DS_Store
