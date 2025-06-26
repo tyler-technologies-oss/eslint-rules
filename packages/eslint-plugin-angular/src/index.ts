@@ -1,7 +1,11 @@
-import recommended from './configs/recommended.json';
+import recommended from './configs/recommended';
+import templateRecommended from './configs/template-recommended';
 
 export default {
-    configs: {
-        recommended
-    }
-}
+  configs: {
+    recommended,
+    templateRecommended,
+  },
+};
+
+export { recommended, templateRecommended };
