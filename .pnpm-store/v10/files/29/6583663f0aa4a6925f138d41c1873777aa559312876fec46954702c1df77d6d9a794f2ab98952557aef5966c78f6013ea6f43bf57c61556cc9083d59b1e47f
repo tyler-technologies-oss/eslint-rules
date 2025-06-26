@@ -1,0 +1,2 @@
+import { UserConfig, UserConfigFn, defineConfig } from "./config-D_2fTM9-.mjs";
+export { UserConfig, UserConfigFn, defineConfig };
