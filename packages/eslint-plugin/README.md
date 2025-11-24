@@ -11,6 +11,11 @@ To install the package run the following command:
 npm install -D @tylertech-eslint/eslint-plugin
 ```
 
+## Requirements
+
+- **ESLint**: v9 or above
+- **typescript-eslint**: v8.0.0 or above (optional, only required when using TypeScript configurations)
+
 ## Usage
 
 This package uses the ESLint flat config format **only**, and is compatible with ESLint v9 and above.

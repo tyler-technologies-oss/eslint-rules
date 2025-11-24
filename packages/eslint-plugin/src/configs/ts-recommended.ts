@@ -13,7 +13,7 @@ export default (plugin: FlatConfig.Plugin): FlatConfig.ConfigArray => [
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        project: true,
+        projectService: true,
         tsconfigRootDir: process.cwd(),
       },
     },
