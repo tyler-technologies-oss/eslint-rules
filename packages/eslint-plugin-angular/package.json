@@ -32,7 +32,7 @@
   ],
   "dependencies": {
     "@typescript-eslint/utils": "catalog:",
-    "angular-eslint": "^20.0.0",
+    "angular-eslint": "^20.7.0",
     "typescript-eslint": "catalog:"
   },
   "devDependencies": {

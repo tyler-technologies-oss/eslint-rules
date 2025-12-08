@@ -5,7 +5,7 @@ import { type FlatConfig } from '@typescript-eslint/utils/ts-eslint';
 /**
  * Recommended ESLint configuration for Angular projects.
  */
-export default [
+const config: FlatConfig.ConfigArray = [
   ...angularEslint.configs.tsRecommended,
   {
     languageOptions: {
@@ -51,4 +51,6 @@ export default [
       '@angular-eslint/use-pipe-transform-interface': 'error',
     },
   },
-] satisfies FlatConfig.ConfigArray;
+];
+
+export default config;

@@ -1,9 +1,10 @@
 import angularEslint from 'angular-eslint';
+import { type FlatConfig } from '@typescript-eslint/utils/ts-eslint';
 
 /**
  * Recommended ESLint configuration for Angular templates.
  */
-export default [
+const config: FlatConfig.ConfigArray = [
   ...angularEslint.configs.templateRecommended,
   ...angularEslint.configs.templateAccessibility,
   {
@@ -19,3 +20,5 @@ export default [
     rules: {},
   },
 ];
+
+export default config;

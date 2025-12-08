@@ -33,21 +33,27 @@
     "@eslint/js": "catalog:",
     "@typescript-eslint/rule-tester": "catalog:",
     "@typescript-eslint/utils": "catalog:",
-    "typescript-eslint": "catalog:",
-    "globals": "^16.2.0"
+    "globals": "^16.5.0",
+    "typescript-eslint": "catalog:"
   },
   "devDependencies": {
     "@types/eslint": "^9.6.1",
     "@types/estree": "1.0.8",
     "@types/jest": "^30.0.0",
     "@types/node": "catalog:",
-    "eslint": "^9.28.0",
-    "jest": "^30.0.0",
+    "eslint": "^9.39.1",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.5",
     "tsdown": "catalog:",
-    "ts-jest": "^29.4.0",
     "typescript": "catalog:"
   },
   "peerDependencies": {
-    "eslint": ">=9"
+    "eslint": ">=9",
+    "typescript-eslint": ">=8.0.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript-eslint": {
+      "optional": true
+    }
   }
 }
