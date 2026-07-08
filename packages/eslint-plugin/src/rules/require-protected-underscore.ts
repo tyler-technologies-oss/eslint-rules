@@ -2,10 +2,10 @@ import { createRule } from '../utils/create-rule';
 import { TSESTree } from '@typescript-eslint/utils';
 
 type Options = string[];
-type MessageIds = 'requirePrivateUnderscore';
+type MessageIds = 'requireProtectedUnderscore';
 
 const ALLOWED_MEMBERS = ['constructor'];
-export const RULE_NAME = 'require-private-underscore';
+export const RULE_NAME = 'require-protected-underscore';
 
 export default createRule<Options, MessageIds>({
   name: RULE_NAME,
@@ -13,12 +13,12 @@ export default createRule<Options, MessageIds>({
     type: 'suggestion',
     docs: {
       description:
-        'Requires private properties or methods to start with an underscore.',
+        'Requires protected properties or methods to start with an underscore.',
     },
     schema: [],
     messages: {
-      requirePrivateUnderscore:
-        "Private member '{{nodeInfo}}' must start with an underscore",
+      requireProtectedUnderscore:
+        "Protected member '{{nodeInfo}}' must start with an underscore",
     },
     fixable: 'code',
   },
@@ -27,17 +27,17 @@ export default createRule<Options, MessageIds>({
     function checkNode(
       node: TSESTree.PropertyDefinition | TSESTree.MethodDefinition,
     ) {
-      const isPrivate = node.accessibility === 'private';
+      const isProtected = node.accessibility === 'protected';
       const propertyName = (node.key as TSESTree.Identifier).name;
 
       if (
-        isPrivate &&
+        isProtected &&
         !propertyName.startsWith('_') &&
         !ALLOWED_MEMBERS.includes(propertyName)
       ) {
         context.report({
           data: { type: node.type, nodeInfo: propertyName },
-          messageId: 'requirePrivateUnderscore',
+          messageId: 'requireProtectedUnderscore',
           node: node,
           fix: function (fixer) {
             return fixer.replaceText(node.key, `_${propertyName}`);

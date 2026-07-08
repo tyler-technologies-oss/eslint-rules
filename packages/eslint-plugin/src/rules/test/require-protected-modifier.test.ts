@@ -1,5 +1,5 @@
 import { RuleTester } from '@typescript-eslint/rule-tester';
-import rule from '../require-private-modifier';
+import rule from '../require-protected-modifier';
 import { parser } from 'typescript-eslint';
 
 const eslintTester = new RuleTester({ languageOptions: { parser } });
@@ -12,7 +12,7 @@ class Test {
 
 const validCode = `
 class Test {
-    private _test = '';
+    protected _test = '';
 }
 `;
 
@@ -26,21 +26,21 @@ class Test {
 
 const validCodeMethod = `
 class Test {
-    private _test() {
+    protected _test() {
         return true
     }
 }
 `;
 
-const validCodeProtected = `
+const validCodePrivate = `
 class Test {
-    protected _test = '';
+    private _test = '';
 }
 `;
 
-const validCodeMethodProtected = `
+const validCodeMethodPrivate = `
 class Test {
-    protected _test() {
+    private _test() {
         return true
     }
 }
@@ -60,33 +60,33 @@ class Test {
 }
 `;
 
-eslintTester.run('require-private-modifier', rule as any, {
-  valid: [validCode, validCodeProtected],
+eslintTester.run('require-protected-modifier', rule as any, {
+  valid: [validCode, validCodePrivate],
   invalid: [
     {
       code: invalidCode,
-      errors: [{ messageId: 'requirePrivateModifier' }],
+      errors: [{ messageId: 'requireProtectedModifier' }],
       output: validCode,
     },
     {
       code: invalidCodePublic,
-      errors: [{ messageId: 'requirePrivateModifier' }],
+      errors: [{ messageId: 'requireProtectedModifier' }],
       output: validCode,
     },
   ],
 });
 
-eslintTester.run('require-private-modifier', rule, {
-  valid: [validCodeMethod, validCodeMethodProtected],
+eslintTester.run('require-protected-modifier', rule, {
+  valid: [validCodeMethod, validCodeMethodPrivate],
   invalid: [
     {
       code: invalidCodeMethod,
-      errors: [{ messageId: 'requirePrivateModifier' }],
+      errors: [{ messageId: 'requireProtectedModifier' }],
       output: validCodeMethod,
     },
     {
       code: invalidCodeMethodPublic,
-      errors: [{ messageId: 'requirePrivateModifier' }],
+      errors: [{ messageId: 'requireProtectedModifier' }],
       output: validCodeMethod,
     },
   ],
