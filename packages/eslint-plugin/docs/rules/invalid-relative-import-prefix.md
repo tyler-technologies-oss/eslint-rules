@@ -1,6 +1,6 @@
-# Ensure relative import paths do not start with redundant `./../` (`@tylertech-eslint/require-private-underscore`)
+# Ensure relative import paths do not start with redundant `./../` (`@tylertech-eslint/invalid-relative-import-prefix`)
 
-💼 This rule is enabled in the ✅ `recommended` [config](https://github.com/tyler-technologies-oss/eslint-rules/blob/main/packages/eslint-plugin/src/configs/typescript.ts).
+💼 This rule is enabled in the ✅ `tsRecommended` [config](https://github.com/tyler-technologies-oss/eslint-rules/blob/main/packages/eslint-plugin/src/configs/ts-recommended.ts).
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
@@ -8,7 +8,7 @@
 
 ## Rule Details
 
-This
+This rule flags relative import paths that begin with the redundant prefix `./../` and autofixes them to the equivalent `../` path.
 
 The following patterns are considered errors:
 

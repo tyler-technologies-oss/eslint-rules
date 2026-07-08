@@ -11,13 +11,25 @@ To install the package, run the following command:
 npm install -D @tylertech-eslint/eslint-plugin-angular
 ```
 
-> This package depends on the [angular-eslint](https://github.com/angular-eslint/angular-eslint/) project, and includes the recommended rules for Angular projects.
+> This package builds on the [angular-eslint](https://github.com/angular-eslint/angular-eslint/) project, and includes the recommended rules for Angular projects.
+
+## Requirements
+
+- **ESLint**: v10 or above
+- **Node.js**: v20.19.0+, v22.13.0+, or v24+ (matching ESLint 10's supported runtimes)
+- **angular-eslint**: v21.4.0+ or v22.0.0+ — declared as a peer dependency so you install the version matching your Angular major (Angular **21** → `angular-eslint@21`, Angular **22** → `angular-eslint@22`).
+
+Install `angular-eslint` alongside this plugin, e.g.:
+
+```bash
+npm install -D @tylertech-eslint/eslint-plugin-angular angular-eslint@22
+```
 
 ## Usage
 
-This package uses the ESLint flat config format **only**, and is compatible with ESLint v9 and above.
+This package uses the ESLint flat config format **only**, and is compatible with ESLint v10 and above.
 
-> **Note:** This plugin is for use with Angular v19 and above.
+> **Note:** This plugin supports Angular v21 and v22 (via the `angular-eslint` version you install).
 
 To use it, set up your ESLint config file as follows:
 

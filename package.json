@@ -6,7 +6,7 @@
   "author": "Tyler Technologies, Inc.",
   "packageManager": "pnpm@10.12.3",
   "engines": {
-    "node": ">=18",
+    "node": "^20.19.0 || ^22.13.0 || >=24",
     "pnpm": ">=10"
   },
   "scripts": {

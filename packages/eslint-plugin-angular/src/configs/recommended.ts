@@ -40,7 +40,9 @@ const config: FlatConfig.ConfigArray = [
       ],
       '@angular-eslint/contextual-lifecycle': 'error',
       '@angular-eslint/directive-class-suffix': 'error',
-      '@angular-eslint/no-conflicting-lifecycle': 'error',
+      // NOTE: `no-conflicting-lifecycle` was removed in angular-eslint v22, so it is
+      // intentionally not referenced here to keep this config compatible with both
+      // angular-eslint v21 and v22.
       '@angular-eslint/no-input-rename': 'error',
       '@angular-eslint/no-inputs-metadata-property': 'error',
       '@angular-eslint/no-output-native': 'error',
