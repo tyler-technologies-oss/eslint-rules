@@ -34,7 +34,6 @@
   },
   "dependencies": {
     "@eslint/js": "catalog:",
-    "@typescript-eslint/rule-tester": "catalog:",
     "@typescript-eslint/utils": "catalog:",
     "globals": "^16.5.0",
     "typescript-eslint": "catalog:"
@@ -43,6 +42,7 @@
     "@types/estree": "1.0.8",
     "@types/jest": "^30.0.0",
     "@types/node": "catalog:",
+    "@typescript-eslint/rule-tester": "catalog:",
     "eslint": "^10.6.0",
     "jest": "^30.2.0",
     "ts-jest": "^29.4.5",
