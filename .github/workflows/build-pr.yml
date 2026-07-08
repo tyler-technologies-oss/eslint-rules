@@ -4,6 +4,10 @@ on:
   pull_request:
     types: [opened, synchronize]
  
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   CI: true
   PNPM_CACHE_FOLDER: .pnpm-store
@@ -11,23 +15,28 @@ env:
 
 jobs:
   build:
-    name: Build and Test
+    name: Build and Test (Node ${{ matrix.node-version }})
     timeout-minutes: 15
     runs-on: ubuntu-latest
- 
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: ['20.19', '22.13', '24']
+
     steps:
       - name: 📥 Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
- 
+
       - name: 🐈 Setup pnpm
         uses: pnpm/action-setup@v4
- 
+
       - name: 🟢 Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ matrix.node-version }}
  
       - name: 📂 Configure pnpm
         run: pnpm config set store-dir $PNPM_CACHE_FOLDER
@@ -43,3 +52,36 @@ jobs:
  
       - name: 🔬 Run Tests
         run: pnpm run test
+
+  # angular-eslint is a peer dependency (`^21.4.0 || ^22.0.0`). The `build` job
+  # above already exercises the Angular config against the committed devDependency
+  # (angular-eslint 22) on every Node version, so this job only needs to cover the
+  # other supported major — angular-eslint 21 — to guard Angular 21 consumers.
+  angular-eslint-21-compat:
+    name: eslint-plugin-angular vs angular-eslint 21
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: 🐈 Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: 🟢 Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.13'
+
+      - name: 📂 Configure pnpm
+        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
+
+      # `pnpm add` pins angular-eslint 21 for the Angular package and installs.
+      - name: 📦 Install with angular-eslint 21
+        run: pnpm --filter @tylertech-eslint/eslint-plugin-angular add -D "angular-eslint@^21.4.0"
+
+      - name: 🔬 Test eslint-plugin-angular
+        run: pnpm --filter @tylertech-eslint/eslint-plugin-angular test

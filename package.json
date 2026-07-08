@@ -6,7 +6,7 @@
   "author": "Tyler Technologies, Inc.",
   "packageManager": "pnpm@10.12.3",
   "engines": {
-    "node": ">=18",
+    "node": "^20.19.0 || ^22.13.0 || >=24",
     "pnpm": ">=10"
   },
   "scripts": {
@@ -23,8 +23,8 @@
     "@commitlint/config-conventional": "^19.8.1",
     "commitlint": "^19.8.1",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
-    "prettier": "^3.7.4",
-    "turbo": "^2.9.14"
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.9.4",
+    "turbo": "^2.10.4"
   }
 }

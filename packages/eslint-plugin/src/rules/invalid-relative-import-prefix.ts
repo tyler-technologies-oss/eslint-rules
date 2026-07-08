@@ -34,10 +34,13 @@ export default createRule<Options, MessageIds>({
           messageId: 'invalidRelativeImportPrefix',
           node: node.source,
           fix: function (fixer) {
-            return fixer.replaceTextRange(
-              [node.source.range[0], node.source.range[0] + 3],
-              `${node.source.raw[0]}../`,
-            );
+            // Strip the redundant leading `./`; `./../x` is equivalent to `../x`.
+            // (The two characters removed are the `.` and `/` immediately after
+            // the opening quote at `range[0]`.)
+            return fixer.removeRange([
+              node.source.range[0] + 1,
+              node.source.range[0] + 3,
+            ]);
           },
         });
       }

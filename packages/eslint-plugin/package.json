@@ -20,6 +20,9 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24"
+  },
   "scripts": {
     "build": "tsdown",
     "test": "jest"
@@ -31,24 +34,23 @@
   },
   "dependencies": {
     "@eslint/js": "catalog:",
-    "@typescript-eslint/rule-tester": "catalog:",
     "@typescript-eslint/utils": "catalog:",
     "globals": "^16.5.0",
     "typescript-eslint": "catalog:"
   },
   "devDependencies": {
-    "@types/eslint": "^9.6.1",
     "@types/estree": "1.0.8",
     "@types/jest": "^30.0.0",
     "@types/node": "catalog:",
-    "eslint": "^9.39.1",
+    "@typescript-eslint/rule-tester": "catalog:",
+    "eslint": "^10.6.0",
     "jest": "^30.2.0",
     "ts-jest": "^29.4.5",
     "tsdown": "catalog:",
     "typescript": "catalog:"
   },
   "peerDependencies": {
-    "eslint": ">=9",
+    "eslint": "^10.0.0",
     "typescript-eslint": ">=8.0.0"
   },
   "peerDependenciesMeta": {

@@ -1,6 +1,6 @@
 # Require `_` prefix on `private` or `protected` members (`@tylertech-eslint/require-private-underscore`)
 
-💼 This rule is enabled in the ✅ `recommended` [config](https://github.com/tyler-technologies-oss/eslint-rules/blob/main/packages/eslint-plugin/src/configs/typescript.ts).
+💼 This rule is enabled in the ✅ `tsRecommended` [config](https://github.com/tyler-technologies-oss/eslint-rules/blob/main/packages/eslint-plugin/src/configs/ts-recommended.ts).
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

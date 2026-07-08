@@ -13,12 +13,13 @@ npm install -D @tylertech-eslint/eslint-plugin
 
 ## Requirements
 
-- **ESLint**: v9 or above
+- **ESLint**: v10 or above
+- **Node.js**: v20.19.0+, v22.13.0+, or v24+ (matching ESLint 10's supported runtimes)
 - **typescript-eslint**: v8.0.0 or above (optional, only required when using TypeScript configurations)
 
 ## Usage
 
-This package uses the ESLint flat config format **only**, and is compatible with ESLint v9 and above.
+This package uses the ESLint flat config format **only**, and is compatible with ESLint v10 and above.
 
 To use it, set up your ESLint config file as follows:
 

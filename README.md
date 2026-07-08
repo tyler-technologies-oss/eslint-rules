@@ -25,7 +25,7 @@ This repository uses [pnpm](https://pnpm.io/) for package management, Turborepo 
 To set up the project locally, follow these steps:
 
 1. Install [pnpm](https://pnpm.io/installation) if you haven't already.
-2. Ensure you have [Node.js](https://nodejs.org/) installed (version 18 or above is required).
+2. Ensure you have [Node.js](https://nodejs.org/) installed (v20.19.0+, v22.13.0+, or v24+ is required, matching ESLint 10's supported runtimes).
 3. Clone the repository:
    ```bash
    git clone https://github.com/tyler-technologies-oss/eslint-rules.git
