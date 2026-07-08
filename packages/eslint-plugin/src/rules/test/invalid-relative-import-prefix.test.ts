@@ -19,6 +19,8 @@ eslintTester.run('invalid-relative-import-prefix', rule as any, {
     'import { thing } from "@scope/pkg"',
   ],
   invalid: [
+    // The fixer strips the redundant leading `./` (`./../x` -> `../x`), it does
+    // not add an extra parent segment.
     {
       code: 'import test from "./../test"',
       errors: [
@@ -28,19 +30,19 @@ eslintTester.run('invalid-relative-import-prefix', rule as any, {
           column: 18,
         },
       ],
-      output: 'import test from "../../test"',
+      output: 'import test from "../test"',
     },
-    // Deeper redundant prefix: the fixer replaces the leading `"./` with `"../`
+    // Deeper redundant prefix: only the leading `./` is removed.
     {
       code: 'import test from "./../../test"',
       errors: [{ messageId: 'invalidRelativeImportPrefix' }],
-      output: 'import test from "../../../test"',
+      output: 'import test from "../../test"',
     },
     // Single-quoted source is handled and the quote style is preserved
     {
       code: "import test from './../test'",
       errors: [{ messageId: 'invalidRelativeImportPrefix' }],
-      output: "import test from '../../test'",
+      output: "import test from '../test'",
     },
   ],
 });
