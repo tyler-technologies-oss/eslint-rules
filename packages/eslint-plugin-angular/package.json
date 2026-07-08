@@ -14,7 +14,8 @@
     "node": "^20.19.0 || ^22.13.0 || >=24"
   },
   "scripts": {
-    "build": "tsdown"
+    "build": "tsdown",
+    "test": "jest"
   },
   "keywords": [
     "eslint",
@@ -38,9 +39,12 @@
     "typescript-eslint": "catalog:"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "catalog:",
     "angular-eslint": "^22.0.0",
     "eslint": "^10.6.0",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.5",
     "tsdown": "catalog:",
     "typescript": "catalog:"
   },
