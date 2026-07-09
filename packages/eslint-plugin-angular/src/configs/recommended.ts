@@ -26,6 +26,7 @@ const config: FlatConfig.ConfigArray = [
         'error',
         {
           type: 'attribute',
+          prefix: [],
           style: 'camelCase',
         },
       ],
