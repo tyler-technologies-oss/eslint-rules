@@ -29,6 +29,26 @@ describe('recommended (TypeScript) config', () => {
       messages.some(m => m.ruleId === '@angular-eslint/component-class-suffix'),
     ).toBe(true);
   });
+
+  it('does not require an "app" prefix on directive selectors', () => {
+    const linter = new Linter();
+    const directive = [
+      "import { Directive } from '@angular/core';",
+      '@Directive({ selector: "[tylFoo]" })',
+      'export class FooDirective {}',
+    ].join('\n');
+
+    const config = [{ files: ['**/*.ts'] }, ...recommended] as Linter.Config[];
+    const messages = linter.verify(directive, config, 'foo.directive.ts');
+
+    expect(messages.some(m => m.fatal)).toBe(false);
+    // Regression guard: `directive-selector` must explicitly set `prefix: []`
+    // so it doesn't silently inherit angular-eslint's own default prefix
+    // (which changed from '' to 'app' between angular-eslint v20 and v21).
+    expect(
+      messages.some(m => m.ruleId === '@angular-eslint/directive-selector'),
+    ).toBe(false);
+  });
 });
 
 describe('templateRecommended (HTML) config', () => {
